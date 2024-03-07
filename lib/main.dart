@@ -1,8 +1,10 @@
 import 'package:camera_flutter/common/configs/locators.dart';
+import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/presentation/pages/error/error.page.dart';
 import 'package:camera_flutter/presentation/pages/home/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 late List<CameraDescription> _cameras;
 Future<void> main() async {
@@ -12,8 +14,22 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<LocalizationsDelegate<dynamic>> get _getLocalizationsDelegates {
+    return const [
+      AppLocalizations.delegate,
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ? const ErrorPage()
         : HomePage(controller: controller);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

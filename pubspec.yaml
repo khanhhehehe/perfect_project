@@ -46,6 +46,8 @@ dependencies:
   copy_with_extension: ^4.0.0
   json_annotation: ^4.8.1
   data_cache_manager: ^1.2.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
