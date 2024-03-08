@@ -6,4 +6,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get myApp => 'Ứng dụng của tôi';
+
+  @override
+  String get errorGoBack => 'Lỗi, quay lại';
 }

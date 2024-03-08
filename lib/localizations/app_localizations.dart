@@ -98,6 +98,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'My app'**
   String get myApp;
+
+  /// No description provided for @errorGoBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Error, go back'**
+  String get errorGoBack;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

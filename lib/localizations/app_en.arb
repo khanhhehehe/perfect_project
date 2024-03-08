@@ -1,3 +1,4 @@
 {
-    "myApp":"My app"
+    "myApp":"My app",
+    "errorGoBack":"Error, go back"
 }

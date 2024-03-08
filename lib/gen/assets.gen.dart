@@ -12,17 +12,31 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/icon_go_back.svg
+  String get iconGoBack => 'assets/images/icon_go_back.svg';
+
   /// File path: assets/images/sunny.png
   AssetGenImage get sunny => const AssetGenImage('assets/images/sunny.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [sunny];
+  List<dynamic> get values => [iconGoBack, sunny];
+}
+
+class $AssetsJsonGen {
+  const $AssetsJsonGen();
+
+  /// File path: assets/json/json
+  String get json => 'assets/json/json';
+
+  /// List of all assets
+  List<String> get values => [json];
 }
 
 class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsJsonGen json = $AssetsJsonGen();
 }
 
 class AssetGenImage {

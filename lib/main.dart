@@ -1,18 +1,25 @@
 import 'package:camera_flutter/common/configs/locators.dart';
+import 'package:camera_flutter/common/configs/routers/pages.dart';
+import 'package:camera_flutter/common/configs/routers/router.dart';
+import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
+import 'package:camera_flutter/presentation/bloc/language/language_cubit.dart';
+import 'package:camera_flutter/presentation/bloc/language/language_state.dart';
+import 'package:camera_flutter/presentation/bloc/main_bloc.dart';
 import 'package:camera_flutter/presentation/pages/error/error.page.dart';
 import 'package:camera_flutter/presentation/pages/home/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:go_router/go_router.dart';
 
 late List<CameraDescription> _cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   _cameras = await availableCameras();
   configureDependencies();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -33,23 +40,50 @@ class _MyAppState extends State<MyApp> {
     ];
   }
 
+  Locale? _localeResolutionCallback(locale, supportedLocales) {
+    for (var supportedLocale in supportedLocales) {
+      if (supportedLocale.languageCode == locale!.languageCode &&
+          supportedLocale.countryCode == locale.countryCode) {
+        return supportedLocale;
+      }
+    }
+    return supportedLocales.first;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: MainBloc.allBlocs(),
+      child: BlocBuilder<LanguageCubit, LanguageState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            routerConfig: getIt<AppRouters>().goRouter,
+            themeMode: ThemeMode.light,
+            locale: state.currentLanguage.locale,
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            localizationsDelegates: _getLocalizationsDelegates,
+            localeResolutionCallback: _localeResolutionCallback,
+            supportedLocales: const [
+              Locale('vi'), // vn
+              Locale('en'), // us
+            ],
+          );
+        },
       ),
-      home: const MyHomePage(title: 'Flutter Camera'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+final homePageRoute = GoRoute(
+    path: Pages.home,
+    builder: (context, GoRouterState state) => const MyHomePage());
 
-  final String title;
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -87,24 +121,11 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  // @override
-  // void didChangeAppLifecycleState(AppLifecycleState state) {
-  //   final CameraController? cameraController = controller;
-  //
-  //   // App state changed before we got the chance to initialize.
-  //   if (cameraController == null || !cameraController.value.isInitialized) {
-  //     return;
-  //   }
-  //
-  //   if (state == AppLifecycleState.inactive) {
-  //     cameraController.dispose();
-  //   } else if (state == AppLifecycleState.resumed) {
-  //     _initializeCameraController(cameraController.description);
-  //   }
-  // }
   Widget _bodyPage() {
     return !controller.value.isInitialized
-        ? const ErrorPage()
+        ? ErrorPage(
+            imagePath: Assets.images.sunny.path,
+          )
         : HomePage(controller: controller);
   }
 
@@ -114,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: const Color(0xFF212B45),
         appBar: AppBar(
           backgroundColor: const Color(0xFF4A7CE2),
-          title: Text(widget.title),
+          title: const Text('MY APPLICATION'),
         ),
         body: _bodyPage());
   }

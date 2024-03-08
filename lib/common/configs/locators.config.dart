@@ -11,17 +11,24 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import '../../presentation/bloc/language/language_cubit.dart' as _i5;
+import 'routers/navigation.dart' as _i3;
+import 'routers/router.dart' as _i4;
+
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
   }) {
-    _i2.GetItHelper(
+    final gh = _i2.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
+    gh.lazySingleton<_i3.AppNavigation>(() => _i3.AppNavigation());
+    gh.lazySingleton<_i4.AppRouters>(() => _i4.AppRouters());
+    gh.lazySingleton<_i5.LanguageCubit>(() => _i5.LanguageCubit());
     return this;
   }
 }

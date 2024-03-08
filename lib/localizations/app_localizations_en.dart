@@ -6,4 +6,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get myApp => 'My app';
+
+  @override
+  String get errorGoBack => 'Error, go back';
 }
