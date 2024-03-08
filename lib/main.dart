@@ -5,12 +5,14 @@ import 'package:camera_flutter/presentation/pages/home/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 late List<CameraDescription> _cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   _cameras = await availableCameras();
   configureDependencies();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
