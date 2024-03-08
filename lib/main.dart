@@ -8,6 +8,7 @@ import 'package:camera_flutter/presentation/bloc/language/language_state.dart';
 import 'package:camera_flutter/presentation/bloc/main_bloc.dart';
 import 'package:camera_flutter/presentation/pages/error/error.page.dart';
 import 'package:camera_flutter/presentation/pages/home/home.page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,9 +18,9 @@ import 'package:go_router/go_router.dart';
 late List<CameraDescription> _cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   _cameras = await availableCameras();
   configureDependencies();
-  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -49,6 +50,14 @@ class _MyAppState extends State<MyApp> {
     }
     return supportedLocales.first;
   }
+
+  ///test
+  // final firebaseAuth = FirebaseAuth.instance;
+  // @override
+  // void initState() {
+  //   firebaseAuth.createUserWithEmailAndPassword(email: "aaaaaaaa1@gmail.com", password: "123123123");
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {

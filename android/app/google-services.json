@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "832007582095",
+    "project_id": "locket-276f2",
+    "storage_bucket": "locket-276f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832007582095:android:3fe7bce01d1d24fdccdbfa",
+        "android_client_info": {
+          "package_name": "com.example.camera_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrABiLIVpB5c_9R44pNC-OJsJX2IHpb2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
