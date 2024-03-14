@@ -9,4 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorGoBack => 'Error, go back';
+
+  @override
+  String get generalMessage => 'Message';
 }

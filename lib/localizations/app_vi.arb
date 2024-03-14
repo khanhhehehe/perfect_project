@@ -1,4 +1,5 @@
 {
     "myApp":"Ứng dụng của tôi",
-    "errorGoBack":"Lỗi, quay lại"
+    "errorGoBack":"Lỗi, quay lại",
+    "generalMessage":"Tin nhắn"
 }

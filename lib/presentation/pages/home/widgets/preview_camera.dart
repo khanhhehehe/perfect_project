@@ -8,14 +8,10 @@ class CameraPreviewHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: MediaQuery.sizeOf(context).width * 0.9,
-        height: MediaQuery.sizeOf(context).width * 0.9,
+        width: MediaQuery.sizeOf(context).width ,
+        height: MediaQuery.sizeOf(context).width ,
         padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          border: Border.all(width: 4, color: const Color(0xFF4A7CE2)),
-          borderRadius: BorderRadius.circular(40),
-          color: const Color(0xFF64B5F6),
-        ),
+
         child: ClipRRect(
             borderRadius: BorderRadius.circular(40),
             child: CameraPreview(controller)));

@@ -1,13 +1,16 @@
+import 'package:camera_flutter/app.theme.dart';
 import 'package:camera_flutter/common/configs/locators.dart';
 import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/configs/routers/router.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
+import 'package:camera_flutter/gen/dimens.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/presentation/bloc/language/language_cubit.dart';
 import 'package:camera_flutter/presentation/bloc/language/language_state.dart';
 import 'package:camera_flutter/presentation/bloc/main_bloc.dart';
 import 'package:camera_flutter/presentation/pages/error/error.page.dart';
 import 'package:camera_flutter/presentation/pages/home/home.page.dart';
+import 'package:camera_flutter/presentation/pages/main.page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -61,6 +64,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    Dimens.init(context);
     return MultiBlocProvider(
       providers: MainBloc.allBlocs(),
       child: BlocBuilder<LanguageCubit, LanguageState>(
@@ -69,10 +73,8 @@ class _MyAppState extends State<MyApp> {
             routerConfig: getIt<AppRouters>().goRouter,
             themeMode: ThemeMode.light,
             locale: state.currentLanguage.locale,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
+            theme: AppTheme.lightTheme(context),
+
             localizationsDelegates: _getLocalizationsDelegates,
             localeResolutionCallback: _localeResolutionCallback,
             supportedLocales: const [
@@ -135,17 +137,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ? ErrorPage(
             imagePath: Assets.images.sunny.path,
           )
-        : HomePage(controller: controller);
+        : MainPage(controller: controller);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFF212B45),
-        appBar: AppBar(
-          backgroundColor: const Color(0xFF4A7CE2),
-          title: const Text('MY APPLICATION'),
-        ),
+        backgroundColor: Colors.black,
+  
         body: _bodyPage());
   }
 }

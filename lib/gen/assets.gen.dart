@@ -14,6 +14,8 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/icon_go_back.svg
   String get iconGoBack => 'assets/images/icon_go_back.svg';
+  String get iconChat => 'assets/images/chat.svg';
+  String get iconUsers => 'assets/images/Users.svg';
 
   /// File path: assets/images/sunny.png
   AssetGenImage get sunny => const AssetGenImage('assets/images/sunny.png');

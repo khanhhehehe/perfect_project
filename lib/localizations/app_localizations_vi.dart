@@ -9,4 +9,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get errorGoBack => 'Lỗi, quay lại';
+
+  @override
+  String get generalMessage => 'Tin nhắn';
 }
