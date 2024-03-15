@@ -1,5 +1,8 @@
 import 'package:camera/camera.dart';
+import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.dart';
+import 'package:camera_flutter/presentation/widgets/app_bar.dart';
+import 'package:camera_flutter/themes/color_style.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,23 +38,33 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          MyAppBar(
+              leading: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.account_circle,
+                    color: Color(0xFFEEF0F7),
+                    size: SpacingUnit.x6,
+                  )),
+              backgroundColor: Colors.transparent),
           const Spacer(),
           CameraPreviewHome(controller: widget.controller),
           const Spacer(),
           IconButton(
-              onPressed: () => _takePicture(),
-              icon: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 2, color: Colors.white),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                padding: const EdgeInsets.all(2),
-                child: const Icon(
-                  Icons.circle,
-                  color: Colors.white,
-                  size: 58,
-                ),
-              )),
+            onPressed: () => _takePicture(),
+            icon: Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 2, color: MyAppColors.gold),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              padding: const EdgeInsets.all(2),
+              child: const Icon(
+                Icons.circle,
+                color: Colors.white,
+                size: SpacingUnit.x13_5,
+              ),
+            ),
+          ),
           const Spacer(),
         ],
       ),
