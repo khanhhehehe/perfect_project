@@ -12,16 +12,30 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/arrow_down.svg
+  String get arrowDown => 'assets/images/arrow_down.svg';
+
+  /// File path: assets/images/icon_chat.svg
+  String get iconChat => 'assets/images/icon_chat.svg';
+
   /// File path: assets/images/icon_go_back.svg
   String get iconGoBack => 'assets/images/icon_go_back.svg';
-  String get iconChat => 'assets/images/chat.svg';
-  String get iconUsers => 'assets/images/Users.svg';
+
+  /// File path: assets/images/icon_users.svg
+  String get iconUsers => 'assets/images/icon_users.svg';
+
+  /// File path: assets/images/image.svg
+  String get image => 'assets/images/image.svg';
+
+  /// File path: assets/images/reload.svg
+  String get reload => 'assets/images/reload.svg';
 
   /// File path: assets/images/sunny.png
   AssetGenImage get sunny => const AssetGenImage('assets/images/sunny.png');
 
   /// List of all assets
-  List<dynamic> get values => [iconGoBack, sunny];
+  List<dynamic> get values =>
+      [arrowDown, iconChat, iconGoBack, iconUsers, image, reload, sunny];
 }
 
 class $AssetsJsonGen {

@@ -12,4 +12,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get generalMessage => 'Tin nhắn';
+
+  @override
+  String get history => 'Lịch sử';
 }

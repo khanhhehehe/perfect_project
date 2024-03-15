@@ -5,6 +5,7 @@ import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
+import 'package:camera_flutter/presentation/pages/home/take_picture.dart';
 import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.dart';
 import 'package:camera_flutter/presentation/pages/main.page.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
@@ -55,8 +56,7 @@ class _HomePageState extends State<HomePage> {
             child: PageView(
               children: [
                 _verticalPageView([
-                  ///thay widget đầu tiên bằng camera
-                  TempWidget(color: Colors.black),
+                  TakePicture(controller: widget.controller),
                   TempWidget(color: Colors.white),
                   TempWidget(color: Colors.red),
                   TempWidget(color: Colors.blueGrey),
@@ -122,16 +122,16 @@ class _HomePageState extends State<HomePage> {
           leading: GestureDetector(
             onTap: widget.onTapProfile,
             child: const CircleAvatarWidget(
-              height: 40,
-              width: 40,
+              height: SpacingUnit.x10,
+              width: SpacingUnit.x10,
               path: '',
             ),
           ),
           title: GestureDetector(
             onTap: () => _showBottomSheet(context),
             child: Container(
-              width: 120,
-              height: 50,
+              width: SpacingUnit.x30,
+              height: SpacingUnit.x12_5,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimens.borderRadius * 40),
                   color: Colors.grey.withOpacity(0.3)),
@@ -141,7 +141,6 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   SvgPicture.asset(
                     Assets.images.iconUsers,
-                    color: Colors.white,
                     width: SpacingUnit.x7,
                     height: SpacingUnit.x7,
                   ),

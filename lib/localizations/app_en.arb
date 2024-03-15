@@ -1,5 +1,6 @@
 {
     "myApp":"My app",
     "errorGoBack":"Error, go back",
-    "generalMessage":"Message"
+    "generalMessage":"Message",
+    "history":"History"
 }

@@ -12,4 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get generalMessage => 'Message';
+
+  @override
+  String get history => 'History';
 }
