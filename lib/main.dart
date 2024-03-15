@@ -3,7 +3,7 @@ import 'package:camera_flutter/common/configs/locators.dart';
 import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/configs/routers/router.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
-import 'package:camera_flutter/gen/dimens.dart';
+import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/presentation/bloc/language/language_cubit.dart';
 import 'package:camera_flutter/presentation/bloc/language/language_state.dart';

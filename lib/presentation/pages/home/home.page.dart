@@ -1,7 +1,10 @@
 import 'package:camera/camera.dart';
+import 'package:camera_flutter/common/configs/locators.dart';
+import 'package:camera_flutter/common/configs/routers/navigation.dart';
+import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
-import 'package:camera_flutter/gen/dimens.dart';
+import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.dart';
 import 'package:camera_flutter/presentation/pages/main.page.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
@@ -13,7 +16,11 @@ class HomePage extends StatefulWidget {
   final VoidCallback? onTapProfile;
   final CameraController controller;
 
-  const HomePage({super.key, required this.controller,  this.onTapMessage, this.onTapProfile});
+  const HomePage(
+      {super.key,
+      required this.controller,
+      this.onTapMessage,
+      this.onTapProfile});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -55,7 +62,6 @@ class _HomePageState extends State<HomePage> {
                   TempWidget(color: Colors.blueGrey),
                   TempWidget(color: Colors.yellow),
                   TempWidget(color: Colors.orange),
-
                 ])
               ],
             ),
@@ -67,6 +73,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
   Widget _verticalPageView(List<Widget> child) {
     return PageView.builder(
       onPageChanged: (index) {},
@@ -105,78 +112,79 @@ class _HomePageState extends State<HomePage> {
   // const Spacer(),
   // ],
   // )
-  Padding _appBar()=>Padding(
-    padding: const EdgeInsets.symmetric(
-        horizontal: Dimens.horizontalPadding * 0.8,vertical: Dimens.verticalPadding*0.2),
-    child: AppBar(
-      leadingWidth: 55,
-      backgroundColor: Colors.transparent,
-      leading: GestureDetector(
-        onTap: widget.onTapProfile,
-        child: const CircleAvatarWidget(
-          height: 40,
-          width: 40,
-          path: '',
-        ),
-      ),
-      title: GestureDetector(
-        onTap: ()=>_showBottomSheet(context),
-        child: Container(
-          width: 120,
-          height: 50,
-          decoration: BoxDecoration(
-              borderRadius:
-              BorderRadius.circular(Dimens.borderRadius * 40),
-              color: Colors.grey.withOpacity(0.3)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                Assets.images.iconUsers,
-                color: Colors.white,
-                width: SpacingUnit.x7,
-                height: SpacingUnit.x7,
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              const Text(
-                "9 Friends",
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w800,
-                    fontFamily: ''),
-              )
-            ],
-          ),
-        ),
-      ),
-      centerTitle: true,
-      actions: [
-        GestureDetector(
-          onTap: widget.onTapMessage,
-          child: Container(
-            width: 50,
-            height: 50,
-            padding: const EdgeInsets.all(Dimens.verticalPadding*0.9),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimens.borderRadius*5),
-                color: Colors.grey.withOpacity(0.3)                    ),
-            child: SvgPicture.asset(
-              Assets.images.iconChat,
-              color: Colors.white,
-              width: SpacingUnit.x8,
-              height: SpacingUnit.x8,
+  Padding _appBar() => Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: Dimens.horizontalPadding * 0.8,
+            vertical: Dimens.verticalPadding * 0.2),
+        child: AppBar(
+          leadingWidth: 55,
+          backgroundColor: Colors.transparent,
+          leading: GestureDetector(
+            onTap: widget.onTapProfile,
+            child: const CircleAvatarWidget(
+              height: 40,
+              width: 40,
+              path: '',
             ),
           ),
-        )
-      ],
-    ),
-  );
+          title: GestureDetector(
+            onTap: () => _showBottomSheet(context),
+            child: Container(
+              width: 120,
+              height: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimens.borderRadius * 40),
+                  color: Colors.grey.withOpacity(0.3)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    Assets.images.iconUsers,
+                    color: Colors.white,
+                    width: SpacingUnit.x7,
+                    height: SpacingUnit.x7,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Text(
+                    "9 Friends",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800,
+                        fontFamily: ''),
+                  )
+                ],
+              ),
+            ),
+          ),
+          centerTitle: true,
+          actions: [
+            GestureDetector(
+              onTap: widget.onTapMessage,
+              child: Container(
+                width: 50,
+                height: 50,
+                padding: const EdgeInsets.all(Dimens.verticalPadding * 0.9),
+                decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.circular(Dimens.borderRadius * 5),
+                    color: Colors.grey.withOpacity(0.3)),
+                child: SvgPicture.asset(
+                  Assets.images.iconChat,
+                  color: Colors.white,
+                  width: SpacingUnit.x8,
+                  height: SpacingUnit.x8,
+                ),
+              ),
+            )
+          ],
+        ),
+      );
 
   _showBottomSheet(BuildContext context) {
-    double bottomSheetHeight = Dimens.screenHeight*0.9;
+    double bottomSheetHeight = Dimens.screenHeight * 0.9;
 
     return showModalBottomSheet(
       context: context,
@@ -203,9 +211,8 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
-
 }
+
 class TempWidget extends StatelessWidget {
   final Color color;
 
@@ -215,6 +222,11 @@ class TempWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: color,
+      body: ElevatedButton(
+          onPressed: () {
+            getIt<AppNavigation>().push(page: Pages.profile);
+          },
+          child: const Text('Push sang man profile')),
     );
   }
 }

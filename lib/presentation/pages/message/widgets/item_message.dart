@@ -1,4 +1,4 @@
-import 'package:camera_flutter/gen/dimens.dart';
+import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:camera_flutter/gen/dimens.dart';
+import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/presentation/pages/message/widgets/item_message.dart';
 import 'package:flutter/material.dart';

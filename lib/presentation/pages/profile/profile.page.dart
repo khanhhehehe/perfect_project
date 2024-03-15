@@ -1,7 +1,12 @@
-import 'package:camera_flutter/gen/dimens.dart';
+import 'package:camera_flutter/common/configs/routers/pages.dart';
+import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+final profilePageRoute = GoRoute(
+    path: Pages.profile,
+    builder: (context, GoRouterState state) => const ProfilePage());
 class ProfilePage extends StatefulWidget {
   final VoidCallback? onBack;
 
