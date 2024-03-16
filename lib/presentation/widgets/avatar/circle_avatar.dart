@@ -2,9 +2,12 @@ import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 class CircleAvatarWidget extends StatelessWidget {
   final double width;
+  final Color? color;
   final double height;
+  final double? borderWidth;
   final String path;
-  const CircleAvatarWidget({super.key, required this.width, required this.height, required this.path});
+  final double?padding;
+  const CircleAvatarWidget({super.key, required this.width, required this.height, required this.path, this.color, this.padding, this.borderWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +16,10 @@ class CircleAvatarWidget extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.yellow, width: 2),
+        border: Border.all(color: color??Colors.yellow, width:borderWidth??3),
       ),
       child: Padding(
-        padding: EdgeInsets.all(4),
+        padding:  EdgeInsets.all(padding??4),
         child: Center(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(width/2),

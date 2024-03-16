@@ -15,6 +15,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/arrow_down.svg
   String get arrowDown => 'assets/images/arrow_down.svg';
 
+  /// File path: assets/images/icon-instagram.svg
+  String get iconInstagram => 'assets/images/icon-instagram.svg';
+
+  /// File path: assets/images/icon-twitter.svg
+  String get iconTwitter => 'assets/images/icon-twitter.svg';
+
   /// File path: assets/images/icon_chat.svg
   String get iconChat => 'assets/images/icon_chat.svg';
 
@@ -23,6 +29,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/icon_users.svg
   String get iconUsers => 'assets/images/icon_users.svg';
+
+  /// File path: assets/images/icon_widget.svg
+  String get iconWidget => 'assets/images/icon_widget.svg';
 
   /// File path: assets/images/image.svg
   String get image => 'assets/images/image.svg';
@@ -34,8 +43,18 @@ class $AssetsImagesGen {
   AssetGenImage get sunny => const AssetGenImage('assets/images/sunny.png');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [arrowDown, iconChat, iconGoBack, iconUsers, image, reload, sunny];
+  List<dynamic> get values => [
+        arrowDown,
+        iconInstagram,
+        iconTwitter,
+        iconChat,
+        iconGoBack,
+        iconUsers,
+        iconWidget,
+        image,
+        reload,
+        sunny
+      ];
 }
 
 class $AssetsJsonGen {

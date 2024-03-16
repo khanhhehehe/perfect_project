@@ -6,8 +6,6 @@ import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/pages/home/take_picture.dart';
-import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.dart';
-import 'package:camera_flutter/presentation/pages/main.page.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -121,9 +119,12 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.transparent,
           leading: GestureDetector(
             onTap: widget.onTapProfile,
-            child: const CircleAvatarWidget(
+            child: CircleAvatarWidget(
               height: SpacingUnit.x10,
+              padding: 0.9,
+              borderWidth: 5.2,
               width: SpacingUnit.x10,
+              color: Colors.grey.withOpacity(0.3),
               path: '',
             ),
           ),
@@ -141,6 +142,8 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   SvgPicture.asset(
                     Assets.images.iconUsers,
+                    colorFilter:
+                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                     width: SpacingUnit.x7,
                     height: SpacingUnit.x7,
                   ),
