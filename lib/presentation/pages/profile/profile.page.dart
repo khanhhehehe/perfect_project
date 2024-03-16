@@ -6,7 +6,9 @@ import 'package:camera_flutter/presentation/pages/profile/widgets/item_detail.da
 import 'package:camera_flutter/presentation/pages/profile/widgets/item_setting.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/item_widget.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
@@ -146,12 +148,121 @@ class _ProfilePageState extends State<ProfilePage> {
                   opacityWidget: 0,
                   padding: 4,
                   isUsingSvgFile: true,
-                  child: const [
+                  child: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        ItemWidget(),
-                        ItemWidget(),
+                        ItemWidget(
+                            callback: () {},
+                            isTutorial: true,
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Stack(
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Positioned(
+                                      left: -30,
+                                      top: 5,
+                                      child: CircleAvatarWidget(
+                                          padding: 0.8,
+                                          width: 40,
+                                          height: 40,
+                                          path: ''),
+                                    ),
+                                    Positioned(
+                                      left: 30,
+                                      top: 5,
+                                      child: CircleAvatarWidget(
+                                          padding: 0.8,
+                                          width: 48,
+                                          height: 40,
+                                          path: ''),
+                                    ),
+                                    CircleAvatarWidget(
+                                        padding: 0.8,
+                                        width: 50,
+                                        height: 50,
+                                        path: ''),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: SpacingUnit.x1,
+                                ),
+                                Text(
+                                  "Everyone",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 0.3),
+                                )
+                              ],
+                            )),
+                        ItemWidget(
+                          callback: () {},
+                          isTutorial: false,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.orange, width: 3),
+                                    borderRadius: BorderRadius.circular(
+                                        Dimens.borderRadius * 5)),
+                                child: Container(
+                                    margin: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                        color: Colors.yellow.withOpacity(0.8),
+                                        borderRadius: BorderRadius.circular(
+                                            Dimens.borderRadius * 5)),
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 28,
+                                    )),
+                              ),
+                              Container(
+                                height: 40,
+                                margin: const EdgeInsets.all(5),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 3),
+                                width: Dimens.screenWidth,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(
+                                          Dimens.borderRadius * 1.8),
+                                      bottomRight: Radius.circular(
+                                          Dimens.borderRadius * 1.8),
+                                      topLeft: Radius.circular(
+                                          Dimens.borderRadius * 0.8),
+                                      topRight: Radius.circular(
+                                          Dimens.borderRadius * 0.8),
+                                    ),
+                                    color: Colors.grey.withOpacity(0.4)),
+                                child: const Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "Create",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ],
                     )
                   ]),
