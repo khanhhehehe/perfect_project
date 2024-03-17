@@ -2,5 +2,6 @@
     "myApp":"Ứng dụng của tôi",
     "errorGoBack":"Lỗi, quay lại",
     "generalMessage":"Tin nhắn",
-    "history":"Lịch sử"
+    "history":"Lịch sử",
+    "sendTo":"Gửi đến..."
 }

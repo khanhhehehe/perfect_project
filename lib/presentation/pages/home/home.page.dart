@@ -127,6 +127,7 @@ class _HomePageState extends State<HomePage> {
                     Assets.images.iconUsers,
                     width: SpacingUnit.x7,
                     height: SpacingUnit.x7,
+                    color: Colors.white,
                   ),
                   const SizedBox(
                     width: 8,

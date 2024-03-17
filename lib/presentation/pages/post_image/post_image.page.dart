@@ -5,6 +5,7 @@ import 'package:camera_flutter/common/configs/routers/navigation.dart';
 import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
+import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/themes/color_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -32,10 +33,25 @@ class PostImage extends StatefulWidget {
 class _PostImageState extends State<PostImage> {
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Column(
         children: [
+          AppBar(
+            title: Text(appLocalizations.sendTo),
+            backgroundColor: Colors.transparent,
+            leading: const SizedBox(),
+            centerTitle: true,
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.file_download_outlined,
+                    size: SpacingUnit.x8,
+                  ))
+            ],
+          ),
           const Spacer(),
           Container(
               width: MediaQuery.sizeOf(context).width,

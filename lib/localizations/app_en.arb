@@ -2,5 +2,6 @@
     "myApp":"My app",
     "errorGoBack":"Error, go back",
     "generalMessage":"Message",
-    "history":"History"
+    "history":"History",
+    "sendTo":"Send to..."
 }

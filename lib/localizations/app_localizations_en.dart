@@ -15,4 +15,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get history => 'History';
+
+  @override
+  String get sendTo => 'Send to...';
 }
