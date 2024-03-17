@@ -28,22 +28,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<void> _takePicture() async {
-    if (!widget.controller.value.isInitialized) {
-      return;
-    }
-    if (widget.controller.value.isTakingPicture) {
-      return;
-    }
-    try {
-      await widget.controller.setFlashMode(FlashMode.off);
-      XFile file = await widget.controller.takePicture();
-      print("IMAGE: ${file.name}");
-    } on CameraException catch (e) {
-      debugPrint("ERROR: $e");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(

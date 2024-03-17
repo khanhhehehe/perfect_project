@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:camera/camera.dart';
+import 'package:camera_flutter/common/configs/locators.dart';
+import 'package:camera_flutter/common/configs/routers/navigation.dart';
+import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
@@ -27,7 +32,9 @@ class _TakePictureState extends State<TakePicture> {
     try {
       await widget.controller.setFlashMode(FlashMode.off);
       XFile file = await widget.controller.takePicture();
-      print("IMAGE: ${file.name}");
+      print("IMAGE: ${file.path}");
+      getIt<AppNavigation>()
+          .push(page: Pages.postImage, paramsQuerry: {"file": file.path});
     } on CameraException catch (e) {
       debugPrint("ERROR: $e");
     }

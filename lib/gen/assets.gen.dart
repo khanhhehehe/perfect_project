@@ -30,12 +30,27 @@ class $AssetsImagesGen {
   /// File path: assets/images/reload.svg
   String get reload => 'assets/images/reload.svg';
 
+  /// File path: assets/images/send.svg
+  String get send => 'assets/images/send.svg';
+
+  /// File path: assets/images/stars.svg
+  String get stars => 'assets/images/stars.svg';
+
   /// File path: assets/images/sunny.png
   AssetGenImage get sunny => const AssetGenImage('assets/images/sunny.png');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [arrowDown, iconChat, iconGoBack, iconUsers, image, reload, sunny];
+  List<dynamic> get values => [
+        arrowDown,
+        iconChat,
+        iconGoBack,
+        iconUsers,
+        image,
+        reload,
+        send,
+        stars,
+        sunny
+      ];
 }
 
 class $AssetsJsonGen {
