@@ -6,8 +6,6 @@ import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/pages/home/take_picture.dart';
-import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.dart';
-import 'package:camera_flutter/presentation/pages/main.page.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -41,11 +39,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 _verticalPageView([
                   TakePicture(controller: widget.controller),
-                  TempWidget(color: Colors.white),
-                  TempWidget(color: Colors.red),
-                  TempWidget(color: Colors.blueGrey),
-                  TempWidget(color: Colors.yellow),
-                  TempWidget(color: Colors.orange),
+                  const TempWidget(color: Colors.white),
+                  const TempWidget(color: Colors.red),
+                  const TempWidget(color: Colors.blueGrey),
+                  const TempWidget(color: Colors.yellow),
+                  const TempWidget(color: Colors.orange),
                 ])
               ],
             ),
@@ -98,8 +96,8 @@ class _HomePageState extends State<HomePage> {
   // )
   Padding _appBar() => Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: Dimens.horizontalPadding * 0.8,
-            vertical: Dimens.verticalPadding * 0.2),
+            horizontal: DimensionApp.horizontalPadding * 0.8,
+            vertical: DimensionApp.verticalPadding * 0.2),
         child: AppBar(
           leadingWidth: 55,
           backgroundColor: Colors.transparent,
@@ -117,7 +115,7 @@ class _HomePageState extends State<HomePage> {
               width: SpacingUnit.x30,
               height: SpacingUnit.x12_5,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimens.borderRadius * 40),
+                  borderRadius: BorderRadius.circular(DimensionApp.borderRadius * 40),
                   color: Colors.grey.withOpacity(0.3)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -150,10 +148,10 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: 50,
                 height: 50,
-                padding: const EdgeInsets.all(Dimens.verticalPadding * 0.9),
+                padding: const EdgeInsets.all(DimensionApp.verticalPadding * 0.9),
                 decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.circular(Dimens.borderRadius * 5),
+                        BorderRadius.circular(DimensionApp.borderRadius * 5),
                     color: Colors.grey.withOpacity(0.3)),
                 child: SvgPicture.asset(
                   Assets.images.iconChat,
@@ -168,7 +166,7 @@ class _HomePageState extends State<HomePage> {
       );
 
   _showBottomSheet(BuildContext context) {
-    double bottomSheetHeight = Dimens.screenHeight * 0.9;
+    double bottomSheetHeight = DimensionApp.screenHeight * 0.9;
 
     return showModalBottomSheet(
       context: context,

@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:camera/camera.dart';
 import 'package:camera_flutter/presentation/pages/home/home.page.dart';
-import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.dart';
 import 'package:camera_flutter/presentation/pages/message/message.page.dart';
 import 'package:camera_flutter/presentation/pages/profile/profile.page.dart';
 import 'package:flutter/material.dart';

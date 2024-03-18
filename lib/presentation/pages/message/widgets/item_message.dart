@@ -10,11 +10,11 @@ class ItemMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsetsDirectional.symmetric(
-          horizontal: Dimens.horizontalPadding),
-      width: Dimens.screenWidth,
+          horizontal: DimensionApp.horizontalPadding),
+      width: DimensionApp.screenWidth,
       height: 80,
       margin: const EdgeInsetsDirectional.symmetric(
-          vertical: Dimens.verticalPadding * 0.6),
+          vertical: DimensionApp.verticalPadding * 0.6),
       child: GestureDetector(
         onTap: () {
           print("cac");

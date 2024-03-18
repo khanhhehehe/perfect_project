@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:camera/camera.dart';
 import 'package:camera_flutter/common/configs/locators.dart';
 import 'package:camera_flutter/common/configs/routers/navigation.dart';
@@ -9,7 +7,6 @@ import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.dart';
 import 'package:camera_flutter/themes/color_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -32,7 +29,6 @@ class _TakePictureState extends State<TakePicture> {
     try {
       await widget.controller.setFlashMode(FlashMode.off);
       XFile file = await widget.controller.takePicture();
-      print("IMAGE: ${file.path}");
       getIt<AppNavigation>()
           .push(page: Pages.postImage, paramsQuerry: {"file": file.path});
     } on CameraException catch (e) {

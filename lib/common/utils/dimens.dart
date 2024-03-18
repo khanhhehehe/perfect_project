@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Dimens {
-  Dimens._();
+class DimensionApp {
+  DimensionApp._();
   static late double _screenWidth;
   static late double _screenHeight;
   static late EdgeInsets _padding;

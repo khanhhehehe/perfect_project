@@ -14,7 +14,6 @@ import 'package:go_router/go_router.dart';
 final postImagePageRoute = GoRoute(
     path: Pages.postImage,
     builder: (context, GoRouterState state) {
-      print("---------------");
       final query = state.uri.queryParameters;
       final filePath = query['file'];
       return PostImage(

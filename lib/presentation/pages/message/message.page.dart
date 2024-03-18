@@ -29,8 +29,8 @@ class MessagePage extends StatelessWidget {
       ),
       body:SingleChildScrollView(
         child: SizedBox(
-          width: Dimens.screenWidth,
-          height: Dimens.screenHeight,
+          width: DimensionApp.screenWidth,
+          height: DimensionApp.screenHeight,
           child: ListView.builder(
             itemBuilder: (context, index) {
               return const ItemMessage();

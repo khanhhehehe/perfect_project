@@ -32,8 +32,8 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: SingleChildScrollView(
         child: SizedBox(
-          width: Dimens.screenWidth,
-          height: Dimens.screenHeight,
+          width: DimensionApp.screenWidth,
+          height: DimensionApp.screenHeight,
           child: ListView.builder(
 
             itemBuilder: (context, index) {
