@@ -6,7 +6,9 @@ import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
+import 'package:camera_flutter/presentation/pages/post_image/widgets/item_user.dart';
 import 'package:camera_flutter/themes/color_style.dart';
+import 'package:camera_flutter/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -38,7 +40,10 @@ class _PostImageState extends State<PostImage> {
       body: Column(
         children: [
           AppBar(
-            title: Text(appLocalizations.sendTo),
+            title: Text(
+              appLocalizations.sendTo,
+              style: TextThemeStyleApp.normalTheme,
+            ),
             backgroundColor: Colors.transparent,
             leading: const SizedBox(),
             centerTitle: true,
@@ -80,7 +85,7 @@ class _PostImageState extends State<PostImage> {
                   height: SpacingUnit.x22,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
+                    color: MyAppColors.primary,
                     borderRadius: BorderRadius.circular(100),
                   ),
                   padding: const EdgeInsets.all(SpacingUnit.x2_5),
@@ -107,13 +112,8 @@ class _PostImageState extends State<PostImage> {
               padding: const EdgeInsets.symmetric(horizontal: SpacingUnit.x2),
               itemCount: 10,
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => Container(
-                width: SpacingUnit.x10,
-                height: SpacingUnit.x10,
-                decoration: BoxDecoration(
-                    color: MyAppColors.gold,
-                    borderRadius: BorderRadius.circular(SpacingUnit.x25)),
-              ),
+              itemBuilder: (context, index) =>
+                  ItemUser(image: Assets.images.sunny.path),
               separatorBuilder: (BuildContext context, int index) =>
                   const SizedBox(width: SpacingUnit.x2),
             ),
