@@ -9,6 +9,16 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsHtmlGen {
+  const $AssetsHtmlGen();
+
+  /// File path: assets/html/help.html
+  String get help => 'assets/html/help.html';
+
+  /// List of all assets
+  List<String> get values => [help];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -66,6 +76,7 @@ class $AssetsJsonGen {
 class Assets {
   Assets._();
 
+  static const $AssetsHtmlGen html = $AssetsHtmlGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsJsonGen json = $AssetsJsonGen();
 }
