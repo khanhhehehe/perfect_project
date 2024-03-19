@@ -2,7 +2,6 @@ import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/themes/color_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 Future<T?> showAppModalBottomSheet<T>({
   required BuildContext context,
@@ -17,24 +16,24 @@ Future<T?> showAppModalBottomSheet<T>({
     elevation: 0,
     shape: const RoundedRectangleBorder(
       borderRadius:
-          BorderRadius.vertical(top: Radius.circular(Dimens.borderRadius * 4)),
+          BorderRadius.vertical(top: Radius.circular(DimensionApp.borderRadius * 4)),
     ),
     isScrollControlled: isScrollControlled ?? true,
     enableDrag: true,
     builder: (BuildContext context) {
       return Container(
-          width: Dimens.screenWidth,
+          width: DimensionApp.screenWidth,
           padding:  EdgeInsets.only(
-              top: Dimens.verticalPadding,
+              top: DimensionApp.verticalPadding,
               bottom: MediaQuery.of(context).viewInsets.bottom,
-              left: Dimens.horizontalPadding * 1.2,
-              right: Dimens.horizontalPadding * 1.2),
-          height: Dimens.heightBottomSheet,
+              left: DimensionApp.horizontalPadding * 1.2,
+              right: DimensionApp.horizontalPadding * 1.2),
+          height: DimensionApp.heightBottomSheet,
           decoration:  BoxDecoration(
               color: MyAppColors.backgroundMainColor,
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(Dimens.borderRadius * 4),
-                  topRight: Radius.circular(Dimens.borderRadius * 4))),
+                  topLeft: Radius.circular(DimensionApp.borderRadius * 4),
+                  topRight: Radius.circular(DimensionApp.borderRadius * 4))),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -46,7 +45,7 @@ Future<T?> showAppModalBottomSheet<T>({
                   height: SpacingUnit.x1_5,
                   decoration: BoxDecoration(
                       color: Colors.grey,
-                      borderRadius: BorderRadius.circular(Dimens.borderRadius)),
+                      borderRadius: BorderRadius.circular(DimensionApp.borderRadius)),
                 ),
               ),
               Expanded(child: child)

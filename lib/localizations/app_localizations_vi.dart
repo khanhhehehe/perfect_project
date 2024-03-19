@@ -18,6 +18,8 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get sendTo => 'Gửi đến...';
+
+  @override
   String get friend => 'Bạn bè';
 
   @override

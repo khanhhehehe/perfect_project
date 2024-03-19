@@ -24,9 +24,9 @@ class ItemSetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: Dimens.verticalPadding * 1.2),
-      padding: const EdgeInsets.symmetric(horizontal: Dimens.horizontalPadding),
-      width: Dimens.screenWidth,
+      margin: const EdgeInsets.symmetric(vertical: DimensionApp.verticalPadding * 1.2),
+      padding: const EdgeInsets.symmetric(horizontal: DimensionApp.horizontalPadding),
+      width: DimensionApp.screenWidth,
       child: Column(
         children: [
           Row(
@@ -56,9 +56,9 @@ class ItemSetting extends StatelessWidget {
           ),
           const SizedBox(height: SpacingUnit.x1_5),
           Container(
-            width: Dimens.screenWidth,
+            width: DimensionApp.screenWidth,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimens.borderRadius * 2.8),
+              borderRadius: BorderRadius.circular(DimensionApp.borderRadius * 2.8),
               color: Colors.white.withOpacity(opacityWidget??0.3),
             ),
             child: Column(

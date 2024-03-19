@@ -25,19 +25,19 @@ class ItemDetail extends StatelessWidget {
       child: Container(
         color: Colors.transparent,
         padding:
-            const EdgeInsets.symmetric(horizontal: Dimens.horizontalPadding),
-        width: Dimens.screenWidth,
+            const EdgeInsets.symmetric(horizontal: DimensionApp.horizontalPadding),
+        width: DimensionApp.screenWidth,
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
               margin: const EdgeInsets.symmetric(
-                  vertical: Dimens.verticalPadding * 0.8),
+                  vertical: DimensionApp.verticalPadding * 0.8),
               width: 48,
               height: 48,
-              padding: const EdgeInsets.all(Dimens.verticalPadding * 0.95),
+              padding: const EdgeInsets.all(DimensionApp.verticalPadding * 0.95),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimens.borderRadius * 5),
+                borderRadius: BorderRadius.circular(DimensionApp.borderRadius * 5),
                 color: Colors.grey.withOpacity(0.3),
               ),
               child: isUsingSvgFile == true && pathSvg != null

@@ -9,6 +9,19 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsHtmlGen {
+  const $AssetsHtmlGen();
+
+  /// File path: assets/html/privacy.html
+  String get privacy => 'assets/html/privacy.html';
+
+  /// File path: assets/html/term.html
+  String get term => 'assets/html/term.html';
+
+  /// List of all assets
+  List<String> get values => [privacy, term];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -39,6 +52,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/reload.svg
   String get reload => 'assets/images/reload.svg';
 
+  /// File path: assets/images/send.svg
+  String get send => 'assets/images/send.svg';
+
+  /// File path: assets/images/stars.svg
+  String get stars => 'assets/images/stars.svg';
+
   /// File path: assets/images/sunny.png
   AssetGenImage get sunny => const AssetGenImage('assets/images/sunny.png');
 
@@ -53,6 +72,8 @@ class $AssetsImagesGen {
         iconWidget,
         image,
         reload,
+        send,
+        stars,
         sunny
       ];
 }
@@ -70,6 +91,7 @@ class $AssetsJsonGen {
 class Assets {
   Assets._();
 
+  static const $AssetsHtmlGen html = $AssetsHtmlGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsJsonGen json = $AssetsJsonGen();
 }

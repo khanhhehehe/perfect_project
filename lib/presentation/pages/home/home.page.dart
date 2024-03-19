@@ -7,6 +7,8 @@ import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/pages/home/take_picture.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
+import 'package:camera_flutter/presentation/widgets/bottom_sheets/content.dart';
+import 'package:camera_flutter/presentation/widgets/bottom_sheets/friend_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -113,7 +115,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           title: GestureDetector(
-            onTap: () => _showBottomSheet(context),
+            onTap: () => showAppModalBottomSheet(context: context, child: FriendBottomSheet()),
             child: Container(
               width: SpacingUnit.x30,
               height: SpacingUnit.x12_5,
@@ -170,33 +172,7 @@ class _HomePageState extends State<HomePage> {
         ),
       );
 
-  _showBottomSheet(BuildContext context) {
-
-    return showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      useRootNavigator: true,
-      builder: (BuildContext context) {
-        return Container(
-          height: DimensionApp.heightBottomSheet,
-          color: Colors.amber,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                const Text('Modal BottomSheet'),
-                ElevatedButton(
-                  child: const Text('Close BottomSheet'),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
+  
 }
 
 class TempWidget extends StatelessWidget {

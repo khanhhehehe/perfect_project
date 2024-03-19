@@ -122,6 +122,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Send to...'**
   String get sendTo;
+
   /// No description provided for @friend.
   ///
   /// In en, this message translates to:

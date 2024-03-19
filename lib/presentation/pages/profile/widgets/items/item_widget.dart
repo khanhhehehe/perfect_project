@@ -37,7 +37,7 @@ class ItemWidget extends StatelessWidget {
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimens.borderRadius*2), 
+                  borderRadius: BorderRadius.circular(DimensionApp.borderRadius*2), 
                   border: Border.all(color: Colors.grey.withOpacity(0.4), width: 4),
                   gradient:LinearGradient(
                     colors: isTutorial? [Colors.blue.withOpacity(0.5), Colors.green.withOpacity(0.5)]:[Colors.white.withOpacity(0.2),Color.fromARGB(255, 214, 211, 211).withOpacity(0.2)], 

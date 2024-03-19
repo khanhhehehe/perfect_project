@@ -1,3 +1,5 @@
+import 'package:camera_flutter/common/configs/locators.dart';
+import 'package:camera_flutter/common/configs/routers/navigation.dart';
 import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
@@ -116,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: Dimens.padding.top * 0.3),
+        padding: EdgeInsets.only(top: DimensionApp.padding.top * 0.3),
         child: ListView(
           controller: _scrollController,
           physics: const BouncingScrollPhysics(),
@@ -244,13 +246,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                       border: Border.all(
                                           color: Colors.orange, width: 3),
                                       borderRadius: BorderRadius.circular(
-                                          Dimens.borderRadius * 5)),
+                                          DimensionApp.borderRadius * 5)),
                                   child: Container(
                                       margin: const EdgeInsets.all(3),
                                       decoration: BoxDecoration(
                                           color: Colors.yellow.withOpacity(0.8),
                                           borderRadius: BorderRadius.circular(
-                                              Dimens.borderRadius * 5)),
+                                              DimensionApp.borderRadius * 5)),
                                       child: const Icon(
                                         Icons.add,
                                         color: Colors.white,
@@ -262,17 +264,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                   margin: const EdgeInsets.all(5),
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 3),
-                                  width: Dimens.screenWidth,
+                                  width: DimensionApp.screenWidth,
                                   decoration: BoxDecoration(
                                       borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(
-                                            Dimens.borderRadius * 1.8),
+                                            DimensionApp.borderRadius * 1.8),
                                         bottomRight: Radius.circular(
-                                            Dimens.borderRadius * 1.8),
+                                            DimensionApp.borderRadius * 1.8),
                                         topLeft: Radius.circular(
-                                            Dimens.borderRadius * 0.8),
+                                            DimensionApp.borderRadius * 0.8),
                                         topRight: Radius.circular(
-                                            Dimens.borderRadius * 0.8),
+                                            DimensionApp.borderRadius * 0.8),
                                       ),
                                       color: Colors.grey.withOpacity(0.4)),
                                   child: Align(
@@ -375,7 +377,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         iconData: Icons.tiktok,
                       ),
                       ItemDetail(
-                        title: 'Instasgram',
+                        title: 'Instagram',
                         onTap: () {},
                         isUsingSvgFile: true,
                         pathSvg: Assets.images.iconInstagram,
@@ -400,12 +402,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       ItemDetail(
                         title: appLocalizations.termOfService,
-                        onTap: () {},
+                        onTap: () {
+                                      getIt<AppNavigation>().push(page: Pages.term);
+
+                        },
                         iconData: Icons.newspaper,
                       ),
                       ItemDetail(
                         title: appLocalizations.privacyPolicy,
-                        onTap: () {},
+                        onTap: () {
+                           getIt<AppNavigation>().push(page: Pages.policy);
+                        },
                         iconData: Icons.policy,
                       ),
                     ]),

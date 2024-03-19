@@ -18,6 +18,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sendTo => 'Send to...';
+
+  @override
   String get friend => 'Friends';
 
   @override
