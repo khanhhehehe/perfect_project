@@ -7,6 +7,8 @@ import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/pages/home/take_picture.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
+import 'package:camera_flutter/presentation/widgets/bottom_sheets/content.dart';
+import 'package:camera_flutter/presentation/widgets/bottom_sheets/friend_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -103,14 +105,17 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.transparent,
           leading: GestureDetector(
             onTap: widget.onTapProfile,
-            child: const CircleAvatarWidget(
+            child: CircleAvatarWidget(
               height: SpacingUnit.x10,
+              padding: 0.9,
+              borderWidth: 5.2,
               width: SpacingUnit.x10,
+              color: Colors.grey.withOpacity(0.3),
               path: '',
             ),
           ),
           title: GestureDetector(
-            onTap: () => _showBottomSheet(context),
+            onTap: () => showAppModalBottomSheet(context: context, child: FriendBottomSheet()),
             child: Container(
               width: SpacingUnit.x30,
               height: SpacingUnit.x12_5,
@@ -123,6 +128,8 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   SvgPicture.asset(
                     Assets.images.iconUsers,
+                    colorFilter:
+                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                     width: SpacingUnit.x7,
                     height: SpacingUnit.x7,
                     color: Colors.white,
@@ -165,34 +172,7 @@ class _HomePageState extends State<HomePage> {
         ),
       );
 
-  _showBottomSheet(BuildContext context) {
-    double bottomSheetHeight = DimensionApp.screenHeight * 0.9;
-
-    return showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      useRootNavigator: true,
-      builder: (BuildContext context) {
-        return Container(
-          height: bottomSheetHeight,
-          color: Colors.amber,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                const Text('Modal BottomSheet'),
-                ElevatedButton(
-                  child: const Text('Close BottomSheet'),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
+  
 }
 
 class TempWidget extends StatelessWidget {

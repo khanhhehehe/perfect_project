@@ -12,11 +12,14 @@ import 'package:flutter/widgets.dart';
 class $AssetsHtmlGen {
   const $AssetsHtmlGen();
 
-  /// File path: assets/html/help.html
-  String get help => 'assets/html/help.html';
+  /// File path: assets/html/privacy.html
+  String get privacy => 'assets/html/privacy.html';
+
+  /// File path: assets/html/term.html
+  String get term => 'assets/html/term.html';
 
   /// List of all assets
-  List<String> get values => [help];
+  List<String> get values => [privacy, term];
 }
 
 class $AssetsImagesGen {
@@ -24,6 +27,12 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/arrow_down.svg
   String get arrowDown => 'assets/images/arrow_down.svg';
+
+  /// File path: assets/images/icon-instagram.svg
+  String get iconInstagram => 'assets/images/icon-instagram.svg';
+
+  /// File path: assets/images/icon-twitter.svg
+  String get iconTwitter => 'assets/images/icon-twitter.svg';
 
   /// File path: assets/images/icon_chat.svg
   String get iconChat => 'assets/images/icon_chat.svg';
@@ -33,6 +42,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/icon_users.svg
   String get iconUsers => 'assets/images/icon_users.svg';
+
+  /// File path: assets/images/icon_widget.svg
+  String get iconWidget => 'assets/images/icon_widget.svg';
 
   /// File path: assets/images/image.svg
   String get image => 'assets/images/image.svg';
@@ -52,9 +64,12 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
         arrowDown,
+        iconInstagram,
+        iconTwitter,
         iconChat,
         iconGoBack,
         iconUsers,
+        iconWidget,
         image,
         reload,
         send,

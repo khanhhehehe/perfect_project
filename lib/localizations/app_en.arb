@@ -3,5 +3,31 @@
     "errorGoBack":"Error, go back",
     "generalMessage":"Message",
     "history":"History",
-    "sendTo":"Send to..."
+    "sendTo":"Send to...",
+    "friend":"Friends",
+    "widget": "Widget",
+    "general": "General",
+  "editProfilePicture": "Edit profile picture",
+  "editName": "Edit name",
+  "editBirthDay": "Edit birthday",
+  "changeEmail": "Change email address",
+  "addTheWidget": "How to add the widget",
+  "blocked": "Blocked",
+  "restorePurchase": "Restore purchases",
+  "support": "Support",
+  "reportProblem": "Reported a problems",
+  "makeSuggestion": "Make a suggestion",
+  "about": "About",
+  "share": "Share",
+  "rate": "Rate",
+  "termOfService": "Terms of Service",
+  "privacyPolicy": "Privacy Policy",
+  "dangerZone": "Danger Zone",
+  "deleteAccount": "Delete account",
+  "signOut": "Sign out",
+  "everyone":"Everyone",
+    "app":"This App",
+    "create":"Create"
+
+
 }

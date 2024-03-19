@@ -18,4 +18,76 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sendTo => 'Send to...';
+
+  @override
+  String get friend => 'Friends';
+
+  @override
+  String get widget => 'Widget';
+
+  @override
+  String get general => 'General';
+
+  @override
+  String get editProfilePicture => 'Edit profile picture';
+
+  @override
+  String get editName => 'Edit name';
+
+  @override
+  String get editBirthDay => 'Edit birthday';
+
+  @override
+  String get changeEmail => 'Change email address';
+
+  @override
+  String get addTheWidget => 'How to add the widget';
+
+  @override
+  String get blocked => 'Blocked';
+
+  @override
+  String get restorePurchase => 'Restore purchases';
+
+  @override
+  String get support => 'Support';
+
+  @override
+  String get reportProblem => 'Reported a problems';
+
+  @override
+  String get makeSuggestion => 'Make a suggestion';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get share => 'Share';
+
+  @override
+  String get rate => 'Rate';
+
+  @override
+  String get termOfService => 'Terms of Service';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get dangerZone => 'Danger Zone';
+
+  @override
+  String get deleteAccount => 'Delete account';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get everyone => 'Everyone';
+
+  @override
+  String get app => 'This App';
+
+  @override
+  String get create => 'Create';
 }
