@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'History'**
   String get history;
+
+  /// No description provided for @sendTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Send to...'**
+  String get sendTo;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

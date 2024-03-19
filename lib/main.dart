@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    Dimens.init(context);
+    DimensionApp.init(context);
     return MultiBlocProvider(
       providers: MainBloc.allBlocs(),
       child: BlocBuilder<LanguageCubit, LanguageState>(

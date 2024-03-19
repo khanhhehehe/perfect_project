@@ -26,22 +26,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<void> _takePicture() async {
-    if (!widget.controller.value.isInitialized) {
-      return;
-    }
-    if (widget.controller.value.isTakingPicture) {
-      return;
-    }
-    try {
-      await widget.controller.setFlashMode(FlashMode.off);
-      XFile file = await widget.controller.takePicture();
-      print("IMAGE: ${file.name}");
-    } on CameraException catch (e) {
-      debugPrint("ERROR: $e");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -55,11 +39,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 _verticalPageView([
                   TakePicture(controller: widget.controller),
-                  TempWidget(color: Colors.white),
-                  TempWidget(color: Colors.red),
-                  TempWidget(color: Colors.blueGrey),
-                  TempWidget(color: Colors.yellow),
-                  TempWidget(color: Colors.orange),
+                  const TempWidget(color: Colors.white),
+                  const TempWidget(color: Colors.red),
+                  const TempWidget(color: Colors.blueGrey),
+                  const TempWidget(color: Colors.yellow),
+                  const TempWidget(color: Colors.orange),
                 ])
               ],
             ),
@@ -112,8 +96,8 @@ class _HomePageState extends State<HomePage> {
   // )
   Padding _appBar() => Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: Dimens.horizontalPadding * 0.8,
-            vertical: Dimens.verticalPadding * 0.2),
+            horizontal: DimensionApp.horizontalPadding * 0.8,
+            vertical: DimensionApp.verticalPadding * 0.2),
         child: AppBar(
           leadingWidth: 55,
           backgroundColor: Colors.transparent,
@@ -134,7 +118,7 @@ class _HomePageState extends State<HomePage> {
               width: SpacingUnit.x30,
               height: SpacingUnit.x12_5,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimens.borderRadius * 40),
+                  borderRadius: BorderRadius.circular(DimensionApp.borderRadius * 40),
                   color: Colors.grey.withOpacity(0.3)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -146,6 +130,7 @@ class _HomePageState extends State<HomePage> {
                         const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                     width: SpacingUnit.x7,
                     height: SpacingUnit.x7,
+                    color: Colors.white,
                   ),
                   const SizedBox(
                     width: 8,
@@ -168,10 +153,10 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: 50,
                 height: 50,
-                padding: const EdgeInsets.all(Dimens.verticalPadding * 0.9),
+                padding: const EdgeInsets.all(DimensionApp.verticalPadding * 0.9),
                 decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.circular(Dimens.borderRadius * 5),
+                        BorderRadius.circular(DimensionApp.borderRadius * 5),
                     color: Colors.grey.withOpacity(0.3)),
                 child: SvgPicture.asset(
                   Assets.images.iconChat,
@@ -186,7 +171,7 @@ class _HomePageState extends State<HomePage> {
       );
 
   _showBottomSheet(BuildContext context) {
-    double bottomSheetHeight = Dimens.screenHeight * 0.9;
+    double bottomSheetHeight = DimensionApp.screenHeight * 0.9;
 
     return showModalBottomSheet(
       context: context,

@@ -4,6 +4,7 @@ import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/main.dart';
 import 'package:camera_flutter/presentation/pages/error/error.page.dart';
+import 'package:camera_flutter/presentation/pages/post_image/post_image.page.dart';
 import 'package:camera_flutter/presentation/pages/profile/profile.page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
@@ -28,5 +29,6 @@ class AppRouters {
   static List<GoRoute> routerPages = {
     Pages.home: homePageRoute,
     Pages.profile: profilePageRoute,
+    Pages.postImage: postImagePageRoute,
   }.entries.map((entry) => entry.value).toList();
 }

@@ -15,4 +15,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get history => 'Lịch sử';
+
+  @override
+  String get sendTo => 'Gửi đến...';
 }
