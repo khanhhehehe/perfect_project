@@ -6,6 +6,7 @@ import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/pages/home/take_picture.dart';
+import 'package:camera_flutter/presentation/pages/home/widgets/background_home.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,32 +29,35 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        children: [
-          _appBar(),
-          Expanded(
-            child: PageView(
-              children: [
-                _verticalPageView([
-                  TakePicture(controller: widget.controller),
-                  const TempWidget(color: Colors.white),
-                  const TempWidget(color: Colors.red),
-                  const TempWidget(color: Colors.blueGrey),
-                  const TempWidget(color: Colors.yellow),
-                  const TempWidget(color: Colors.orange),
-                ])
-              ],
+    return Stack(children: [
+      BackgroundHome(controller: widget.controller),
+      SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            _appBar(),
+            Expanded(
+              child: PageView(
+                children: [
+                  _verticalPageView([
+                    TakePicture(controller: widget.controller),
+                    const TempWidget(color: Colors.white),
+                    const TempWidget(color: Colors.red),
+                    const TempWidget(color: Colors.blueGrey),
+                    const TempWidget(color: Colors.yellow),
+                    const TempWidget(color: Colors.orange),
+                  ])
+                ],
+              ),
             ),
-          ),
-          // Your additional column widgets go here
-          // For example:
-          // Text('Additional Widget'),
-        ],
+            // Your additional column widgets go here
+            // For example:
+            // Text('Additional Widget'),
+          ],
+        ),
       ),
-    );
+    ]);
   }
 
   Widget _verticalPageView(List<Widget> child) {
@@ -115,7 +119,8 @@ class _HomePageState extends State<HomePage> {
               width: SpacingUnit.x30,
               height: SpacingUnit.x12_5,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(DimensionApp.borderRadius * 40),
+                  borderRadius:
+                      BorderRadius.circular(DimensionApp.borderRadius * 40),
                   color: Colors.grey.withOpacity(0.3)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -148,7 +153,8 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: 50,
                 height: 50,
-                padding: const EdgeInsets.all(DimensionApp.verticalPadding * 0.9),
+                padding:
+                    const EdgeInsets.all(DimensionApp.verticalPadding * 0.9),
                 decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.circular(DimensionApp.borderRadius * 5),
