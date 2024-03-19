@@ -43,7 +43,7 @@ class ItemSetting extends StatelessWidget {
                       size: 26,
                       color: Colors.white.withOpacity(0.9),
                     ),
-                    SizedBox(width: SpacingUnit.x1,),
+                    const SizedBox(width: SpacingUnit.x1,),
               Text(
                 title,
                 style: TextStyle(
@@ -56,7 +56,6 @@ class ItemSetting extends StatelessWidget {
           ),
           const SizedBox(height: SpacingUnit.x1_5),
           Container(
-            padding:  EdgeInsets.symmetric(horizontal: padding??Dimens.horizontalPadding),
             width: Dimens.screenWidth,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimens.borderRadius * 2.8),

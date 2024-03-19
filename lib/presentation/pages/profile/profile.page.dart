@@ -2,15 +2,18 @@ import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
-import 'package:camera_flutter/presentation/pages/profile/widgets/item_detail.dart';
-import 'package:camera_flutter/presentation/pages/profile/widgets/item_setting.dart';
-import 'package:camera_flutter/presentation/pages/profile/widgets/item_widget.dart';
+import 'package:camera_flutter/localizations/app_localizations.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/edit_name_bottom_sheet.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/widget_bottom_sheet.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/items/item_detail.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/items/item_setting.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/items/item_widget.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:camera_flutter/presentation/widgets/bottom_sheets/friend_bottom_sheet.dart';
+import 'package:camera_flutter/presentation/widgets/bottom_sheets/content.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 final profilePageRoute = GoRoute(
     path: Pages.profile,
@@ -30,11 +33,21 @@ class _ProfilePageState extends State<ProfilePage> {
   double _appBarOpacity = 1.0;
   bool _showRowInAppBar = false;
   bool _showAvatar = true;
+  PackageInfo? _packageInfo;
+
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
     _scrollController.addListener(_onScroll);
+    _initPackageInfo();
+  }
+
+  Future<void> _initPackageInfo() async {
+    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = packageInfo;
+    });
   }
 
   @override
@@ -60,12 +73,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.black.withOpacity(0.9),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.black,
         title: _showRowInAppBar
             ? const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -102,294 +116,317 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: Dimens.padding.top * 2),
-        child: SingleChildScrollView(
+        padding: EdgeInsets.only(top: Dimens.padding.top * 0.3),
+        child: ListView(
           controller: _scrollController,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Opacity(
-                opacity: _showAvatar ? 1 : 1 - _appBarOpacity,
-                child: Column(
-                  children: [
-                    GestureDetector(
-                        onTap: () {},
-                        child: const CircleAvatarWidget(
-                            width: 150, height: 150, path: '')),
-                    const SizedBox(height: SpacingUnit.x2_25),
-                    const Text(
-                      "data",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
+          physics: const BouncingScrollPhysics(),
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Opacity(
+                  opacity: _showAvatar ? 1 : 1 - _appBarOpacity,
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                          onTap: () {},
+                          child: const CircleAvatarWidget(
+                              width: 150, height: 150, path: '')),
+                      const SizedBox(height: SpacingUnit.x2_25),
+                      const Text(
+                        "Khanh an buoi",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: SpacingUnit.x10,
-              ),
-              ItemSetting(iconData: Icons.search, title: "Friends", child: [
-                ItemDetail(
-                  iconData: Icons.people,
-                  title: '9 Friends',
-                  onTap: () {
-                    print("hehe");
-                  },
-                )
-              ]),
-              ItemSetting(
-                  pathSvg: Assets.images.iconWidget,
-                  title: "Widget",
-                  opacityWidget: 0,
-                  padding: 4,
-                  isUsingSvgFile: true,
-                  child: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        ItemWidget(
-                            callback: () {},
-                            isTutorial: true,
-                            child: const Column(
+                const SizedBox(
+                  height: SpacingUnit.x10,
+                ),
+                ItemSetting(
+                    iconData: Icons.search,
+                    title: appLocalizations.friend,
+                    child: [
+                      ItemDetail(
+                        iconData: Icons.people,
+                        title: '${9} ${appLocalizations.friend}',
+                        onTap: () {
+                          showAppModalBottomSheet(
+                            context: context,
+                            child: const FriendBottomSheet(),
+                          );
+                        },
+                      )
+                    ]),
+                ItemSetting(
+                    pathSvg: Assets.images.iconWidget,
+                    title: appLocalizations.widget,
+                    opacityWidget: 0,
+                    padding: 4,
+                    isUsingSvgFile: true,
+                    child: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ItemWidget(
+                              callback: () {},
+                              isTutorial: true,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      Positioned(
+                                        left: -30,
+                                        top: 5,
+                                        child: CircleAvatarWidget(
+                                            padding: 0.8,
+                                            width: 40,
+                                            height: 40,
+                                            path: ''),
+                                      ),
+                                      Positioned(
+                                        left: 30,
+                                        top: 5,
+                                        child: CircleAvatarWidget(
+                                            padding: 0.8,
+                                            width: 48,
+                                            height: 40,
+                                            path: ''),
+                                      ),
+                                      CircleAvatarWidget(
+                                          padding: 0.8,
+                                          width: 50,
+                                          height: 50,
+                                          path: ''),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: SpacingUnit.x1,
+                                  ),
+                                  Text(
+                                    appLocalizations.everyone,
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 0.3),
+                                  )
+                                ],
+                              )),
+                          ItemWidget(
+                            callback: () {
+                              showAppModalBottomSheet(
+                                context: context,
+                                child: const WidgetBottomSheet(),
+                              );
+                            },
+                            isTutorial: false,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Stack(
-                                  clipBehavior: Clip.none,
-                                  children: [
-                                    Positioned(
-                                      left: -30,
-                                      top: 5,
-                                      child: CircleAvatarWidget(
-                                          padding: 0.8,
-                                          width: 40,
-                                          height: 40,
-                                          path: ''),
-                                    ),
-                                    Positioned(
-                                      left: 30,
-                                      top: 5,
-                                      child: CircleAvatarWidget(
-                                          padding: 0.8,
-                                          width: 48,
-                                          height: 40,
-                                          path: ''),
-                                    ),
-                                    CircleAvatarWidget(
-                                        padding: 0.8,
-                                        width: 50,
-                                        height: 50,
-                                        path: ''),
-                                  ],
+                                const SizedBox(
+                                  height: 10,
                                 ),
-                                SizedBox(
-                                  height: SpacingUnit.x1,
+                                Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.orange, width: 3),
+                                      borderRadius: BorderRadius.circular(
+                                          Dimens.borderRadius * 5)),
+                                  child: Container(
+                                      margin: const EdgeInsets.all(3),
+                                      decoration: BoxDecoration(
+                                          color: Colors.yellow.withOpacity(0.8),
+                                          borderRadius: BorderRadius.circular(
+                                              Dimens.borderRadius * 5)),
+                                      child: const Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                        size: 28,
+                                      )),
                                 ),
-                                Text(
-                                  "Everyone",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 0.3),
+                                Container(
+                                  height: 40,
+                                  margin: const EdgeInsets.all(5),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 3),
+                                  width: Dimens.screenWidth,
+                                  decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(
+                                            Dimens.borderRadius * 1.8),
+                                        bottomRight: Radius.circular(
+                                            Dimens.borderRadius * 1.8),
+                                        topLeft: Radius.circular(
+                                            Dimens.borderRadius * 0.8),
+                                        topRight: Radius.circular(
+                                            Dimens.borderRadius * 0.8),
+                                      ),
+                                      color: Colors.grey.withOpacity(0.4)),
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      appLocalizations.create,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
                                 )
                               ],
-                            )),
-                        ItemWidget(
-                          callback: () {},
-                          isTutorial: false,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                width: 80,
-                                height: 80,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.orange, width: 3),
-                                    borderRadius: BorderRadius.circular(
-                                        Dimens.borderRadius * 5)),
-                                child: Container(
-                                    margin: const EdgeInsets.all(3),
-                                    decoration: BoxDecoration(
-                                        color: Colors.yellow.withOpacity(0.8),
-                                        borderRadius: BorderRadius.circular(
-                                            Dimens.borderRadius * 5)),
-                                    child: const Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 28,
-                                    )),
-                              ),
-                              Container(
-                                height: 40,
-                                margin: const EdgeInsets.all(5),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 3),
-                                width: Dimens.screenWidth,
-                                decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(
-                                          Dimens.borderRadius * 1.8),
-                                      bottomRight: Radius.circular(
-                                          Dimens.borderRadius * 1.8),
-                                      topLeft: Radius.circular(
-                                          Dimens.borderRadius * 0.8),
-                                      topRight: Radius.circular(
-                                          Dimens.borderRadius * 0.8),
-                                    ),
-                                    color: Colors.grey.withOpacity(0.4)),
-                                child: const Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    "Create",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
-                              )
-                            ],
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ]),
-              ItemSetting(iconData: Icons.person, title: "General", child: [
-                ItemDetail(
-                  iconData: Icons.account_circle,
-                  title: 'Edit profile picture',
-                  onTap: () {
-                    print("hehe");
-                  },
-                ),
-                ItemDetail(
-                  iconData: Icons.sell,
-                  title: 'Edit name',
-                  onTap: () {
-                    print("hehe");
-                  },
-                ),
-                ItemDetail(
-                  iconData: Icons.celebration,
-                  title: 'Edit birthday',
-                  onTap: () {
-                    print("hehe");
-                  },
-                ),
-                ItemDetail(
-                  iconData: Icons.email,
-                  title: 'Change email address',
-                  onTap: () {
-                    print("hehe");
-                  },
-                ),
-                ItemDetail(
-                  iconData: Icons.now_widgets_sharp,
-                  title: 'How to add the widget',
-                  onTap: () {
-                    print("hehe");
-                  },
-                ),
-                ItemDetail(
-                  iconData: Icons.block,
-                  title: 'Blocked',
-                  onTap: () {
-                    print("hehe");
-                  },
-                ),
-                ItemDetail(
-                  iconData: Icons.settings_backup_restore,
-                  title: 'Restore purchases',
-                  onTap: () {
-                    print("hehe");
-                  },
-                ),
-              ]),
-              ItemSetting(
-                  iconData: Icons.support_agent,
-                  title: "Support",
-                  child: [
-                    ItemDetail(
-                        title: 'Report a problem',
-                        iconData: Icons.error,
+                        ],
+                      )
+                    ]),
+                ItemSetting(
+                    iconData: Icons.person,
+                    title: appLocalizations.general,
+                    child: [
+                      ItemDetail(
+                        iconData: Icons.account_circle,
+                        title: appLocalizations.editProfilePicture,
                         onTap: () {
                           print("hehe");
-                        }),
-                    ItemDetail(
-                        title: 'Make a suggestion',
-                        iconData: Icons.add_comment,
+                        },
+                      ),
+                      ItemDetail(
+                        iconData: Icons.sell,
+                        title: appLocalizations.editName,
+                        onTap: () {
+                          showAppModalBottomSheet(
+                              context: context, child: const EdigNametBottomSheet());
+                        },
+                      ),
+                      ItemDetail(
+                        iconData: Icons.celebration,
+                        title: appLocalizations.editBirthDay,
                         onTap: () {
                           print("hehe");
-                        }),
-                  ]),
-              ItemSetting(title: 'About', iconData: Icons.favorite, child: [
-                ItemDetail(
-                  title: 'TikTok',
-                  onTap: () {},
-                  iconData: Icons.tiktok,
-                ),
-                ItemDetail(
-                  title: 'Instasgram',
-                  onTap: () {},
-                  isUsingSvgFile: true,
-                  pathSvg: Assets.images.iconInstagram,
-                ),
-                ItemDetail(
-                  title: 'Twitter',
-                  onTap: () {},
-                  isUsingSvgFile: true,
-                  pathSvg: Assets.images.iconTwitter,
-                ),
-                ItemDetail(
-                  title: 'Share Locket',
-                  onTap: () {},
-                  iconData: Icons.ios_share,
-                ),
-                ItemDetail(
-                  title: 'Rate Locket',
-                  onTap: () {},
-                  iconData: Icons.star_rate_rounded,
-                ),
-                ItemDetail(
-                  title: 'Terms of Service',
-                  onTap: () {},
-                  iconData: Icons.newspaper,
-                ),
-                ItemDetail(
-                  title: 'Privacy Policy',
-                  onTap: () {},
-                  iconData: Icons.policy,
-                ),
-              ]),
-              ItemSetting(
-                  title: 'Danger Zone',
-                  iconData: Icons.gpp_maybe,
-                  child: [
-                    ItemDetail(
-                      title: 'Delete account',
-                      onTap: () {},
-                      iconData: Icons.delete,
-                    ),
-                    ItemDetail(
-                      title: 'Sign out',
-                      onTap: () {},
-                      iconData: Icons.waving_hand,
-                    ),
-                  ])
-            ],
-          ),
+                        },
+                      ),
+                      ItemDetail(
+                        iconData: Icons.email,
+                        title: appLocalizations.changeEmail,
+                        onTap: () {
+                          print("hehe");
+                        },
+                      ),
+                      ItemDetail(
+                        iconData: Icons.now_widgets_sharp,
+                        title: appLocalizations.addTheWidget,
+                        onTap: () {
+                          print("hehe");
+                        },
+                      ),
+                      ItemDetail(
+                        iconData: Icons.block,
+                        title: appLocalizations.blocked,
+                        onTap: () {
+                          print("hehe");
+                        },
+                      ),
+                      ItemDetail(
+                        iconData: Icons.settings_backup_restore,
+                        title: appLocalizations.restorePurchase,
+                        onTap: () {
+                          print("hehe");
+                        },
+                      ),
+                    ]),
+                ItemSetting(
+                    iconData: Icons.support_agent,
+                    title: appLocalizations.support,
+                    child: [
+                      ItemDetail(
+                          title: appLocalizations.reportProblem,
+                          iconData: Icons.error,
+                          onTap: () {
+                            print("hehe");
+                          }),
+                      ItemDetail(
+                          title: appLocalizations.makeSuggestion,
+                          iconData: Icons.add_comment,
+                          onTap: () {
+                            print("hehe");
+                          }),
+                    ]),
+                ItemSetting(
+                    title: appLocalizations.about,
+                    iconData: Icons.favorite,
+                    child: [
+                      ItemDetail(
+                        title: 'TikTok',
+                        onTap: () {},
+                        iconData: Icons.tiktok,
+                      ),
+                      ItemDetail(
+                        title: 'Instasgram',
+                        onTap: () {},
+                        isUsingSvgFile: true,
+                        pathSvg: Assets.images.iconInstagram,
+                      ),
+                      ItemDetail(
+                        title: 'Twitter',
+                        onTap: () {},
+                        isUsingSvgFile: true,
+                        pathSvg: Assets.images.iconTwitter,
+                      ),
+                      ItemDetail(
+                        title:
+                            '${appLocalizations.share} ${_packageInfo?.appName ?? appLocalizations.app}',
+                        onTap: () {},
+                        iconData: Icons.ios_share,
+                      ),
+                      ItemDetail(
+                        title:
+                            '${appLocalizations.rate} ${_packageInfo?.appName ?? appLocalizations.app}',
+                        onTap: () {},
+                        iconData: Icons.star_rate_rounded,
+                      ),
+                      ItemDetail(
+                        title: appLocalizations.termOfService,
+                        onTap: () {},
+                        iconData: Icons.newspaper,
+                      ),
+                      ItemDetail(
+                        title: appLocalizations.privacyPolicy,
+                        onTap: () {},
+                        iconData: Icons.policy,
+                      ),
+                    ]),
+                ItemSetting(
+                    title: appLocalizations.dangerZone,
+                    iconData: Icons.gpp_maybe,
+                    child: [
+                      ItemDetail(
+                        title: appLocalizations.deleteAccount,
+                        onTap: () {},
+                        iconData: Icons.delete,
+                      ),
+                      ItemDetail(
+                        title: appLocalizations.signOut,
+                        onTap: () {},
+                        iconData: Icons.waving_hand,
+                      ),
+                    ])
+              ],
+            )
+          ],
         ),
       ),
     );

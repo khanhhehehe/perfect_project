@@ -122,6 +122,149 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Send to...'**
   String get sendTo;
+  /// No description provided for @friend.
+  ///
+  /// In en, this message translates to:
+  /// **'Friends'**
+  String get friend;
+
+  /// No description provided for @widget.
+  ///
+  /// In en, this message translates to:
+  /// **'Widget'**
+  String get widget;
+
+  /// No description provided for @general.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get general;
+
+  /// No description provided for @editProfilePicture.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile picture'**
+  String get editProfilePicture;
+
+  /// No description provided for @editName.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit name'**
+  String get editName;
+
+  /// No description provided for @editBirthDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit birthday'**
+  String get editBirthDay;
+
+  /// No description provided for @changeEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Change email address'**
+  String get changeEmail;
+
+  /// No description provided for @addTheWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'How to add the widget'**
+  String get addTheWidget;
+
+  /// No description provided for @blocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked'**
+  String get blocked;
+
+  /// No description provided for @restorePurchase.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore purchases'**
+  String get restorePurchase;
+
+  /// No description provided for @support.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get support;
+
+  /// No description provided for @reportProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported a problems'**
+  String get reportProblem;
+
+  /// No description provided for @makeSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a suggestion'**
+  String get makeSuggestion;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @share.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share;
+
+  /// No description provided for @rate.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate'**
+  String get rate;
+
+  /// No description provided for @termOfService.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get termOfService;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @dangerZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Danger Zone'**
+  String get dangerZone;
+
+  /// No description provided for @deleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get deleteAccount;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOut;
+
+  /// No description provided for @everyone.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone'**
+  String get everyone;
+
+  /// No description provided for @app.
+  ///
+  /// In en, this message translates to:
+  /// **'This App'**
+  String get app;
+
+  /// No description provided for @create.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get create;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

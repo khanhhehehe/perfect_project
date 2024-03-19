@@ -171,7 +171,6 @@ class _HomePageState extends State<HomePage> {
       );
 
   _showBottomSheet(BuildContext context) {
-    double bottomSheetHeight = DimensionApp.screenHeight * 0.9;
 
     return showModalBottomSheet(
       context: context,
@@ -179,7 +178,7 @@ class _HomePageState extends State<HomePage> {
       useRootNavigator: true,
       builder: (BuildContext context) {
         return Container(
-          height: bottomSheetHeight,
+          height: DimensionApp.heightBottomSheet,
           color: Colors.amber,
           child: Center(
             child: Column(
