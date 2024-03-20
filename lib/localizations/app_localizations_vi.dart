@@ -90,4 +90,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get create => 'Tạo';
+
+  @override
+  String get askPermission => 'Quyền máy ảnh';
+
+  @override
+  String get youNeedToGrantCameraPermissions => 'Bạn cần cấp quyền máy ảnh. Đi tới cài đặt ngay?';
+
+  @override
+  String get approve => 'Xác nhận';
 }

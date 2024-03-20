@@ -1,12 +1,12 @@
 {
-    "myApp":"My app",
-    "errorGoBack":"Error, go back",
-    "generalMessage":"Message",
-    "history":"History",
-    "sendTo":"Send to...",
-    "friend":"Friends",
-    "widget": "Widget",
-    "general": "General",
+  "myApp":"My app",
+  "errorGoBack":"Error, go back",
+  "generalMessage":"Message",
+  "history":"History",
+  "sendTo":"Send to...",
+  "friend":"Friends",
+  "widget": "Widget",
+  "general": "General",
   "editProfilePicture": "Edit profile picture",
   "editName": "Edit name",
   "editBirthDay": "Edit birthday",
@@ -26,8 +26,11 @@
   "deleteAccount": "Delete account",
   "signOut": "Sign out",
   "everyone":"Everyone",
-    "app":"This App",
-    "create":"Create"
+  "app":"This App",
+  "create":"Create",
+  "askPermission":"Camera permissions",
+  "youNeedToGrantCameraPermissions":"You need to grant camera permissions. Go to settings now?",
+  "approve":"Approve"
 
 
 }

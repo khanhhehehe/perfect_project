@@ -34,5 +34,6 @@ class AppRouters {
     Pages.policy: policyPage,
     Pages.term: termsPage,
     Pages.postImage: postImagePageRoute,
+    Pages.error: errorPageRoute,
   }.entries.map((entry) => entry.value).toList();
 }

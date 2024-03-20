@@ -2,13 +2,11 @@ import 'package:camera_flutter/app.theme.dart';
 import 'package:camera_flutter/common/configs/locators.dart';
 import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/configs/routers/router.dart';
-import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/presentation/bloc/language/language_cubit.dart';
 import 'package:camera_flutter/presentation/bloc/language/language_state.dart';
 import 'package:camera_flutter/presentation/bloc/main_bloc.dart';
-import 'package:camera_flutter/presentation/pages/error/error.page.dart';
 import 'package:camera_flutter/presentation/pages/main.page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +71,6 @@ class _MyAppState extends State<MyApp> {
             themeMode: ThemeMode.light,
             locale: state.currentLanguage.locale,
             theme: AppTheme.lightTheme(context),
-
             localizationsDelegates: _getLocalizationsDelegates,
             localeResolutionCallback: _localeResolutionCallback,
             supportedLocales: const [
@@ -94,16 +91,16 @@ final homePageRoute = GoRoute(
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   late CameraController controller;
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
     controller = CameraController(_cameras[0], ResolutionPreset.max);
     controller.initialize().then((_) {
@@ -116,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
         switch (e.code) {
           case 'CameraAccessDenied':
             // Handle access errors here.
+            // getIt<AppNavigation>().push(page: Pages.error);
             break;
           default:
             // Handle other errors here.
@@ -132,16 +130,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _bodyPage() {
-    return !controller.value.isInitialized
-        ? ErrorPage(
-            imagePath: Assets.images.sunny.path,
-          )
-        : MainPage(controller: controller);
+    return MainPage(controller: controller);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    setState(() {});
+    super.didChangeAppLifecycleState(state);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: _bodyPage());
+    return Scaffold(body: _bodyPage());
   }
 }

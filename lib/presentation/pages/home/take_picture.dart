@@ -9,6 +9,7 @@ import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.da
 import 'package:camera_flutter/themes/color_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class TakePicture extends StatefulWidget {
   final CameraController controller;
@@ -18,22 +19,48 @@ class TakePicture extends StatefulWidget {
   State<TakePicture> createState() => _TakePictureState();
 }
 
-class _TakePictureState extends State<TakePicture> {
+class _TakePictureState extends State<TakePicture> with WidgetsBindingObserver {
+  late PermissionStatus permissionCameraStatus;
   Future<void> _takePicture() async {
-    if (!widget.controller.value.isInitialized) {
-      return;
+    if (permissionCameraStatus.isGranted) {
+      if (!widget.controller.value.isInitialized) {
+        return;
+      }
+      if (widget.controller.value.isTakingPicture) {
+        return;
+      }
+      try {
+        await widget.controller.setFlashMode(FlashMode.off);
+        XFile file = await widget.controller.takePicture();
+        getIt<AppNavigation>()
+            .push(page: Pages.postImage, paramsQuerry: {"file": file.path});
+      } on CameraException catch (e) {
+        debugPrint("ERROR: $e");
+      }
+    } else {
+      _showPermissionDialog();
     }
-    if (widget.controller.value.isTakingPicture) {
-      return;
+  }
+
+  Future<void> _checkPermission() async {
+    permissionCameraStatus = await Permission.camera.status;
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    _checkPermission();
+    super.initState();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed &&
+        !permissionCameraStatus.isGranted) {
+      _checkPermission();
     }
-    try {
-      await widget.controller.setFlashMode(FlashMode.off);
-      XFile file = await widget.controller.takePicture();
-      getIt<AppNavigation>()
-          .push(page: Pages.postImage, paramsQuerry: {"file": file.path});
-    } on CameraException catch (e) {
-      debugPrint("ERROR: $e");
-    }
+    setState(() {});
+    super.didChangeAppLifecycleState(state);
   }
 
   @override
@@ -106,6 +133,29 @@ class _TakePictureState extends State<TakePicture> {
         ),
         const Spacer(),
       ],
+    );
+  }
+
+  Future<void> _showPermissionDialog() async {
+    final appLocalizations = AppLocalizations.of(context)!;
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(appLocalizations.askPermission),
+          content: Text(appLocalizations.youNeedToGrantCameraPermissions),
+          actions: <Widget>[
+            TextButton(
+              child: Text(appLocalizations.approve),
+              onPressed: () {
+                openAppSettings();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

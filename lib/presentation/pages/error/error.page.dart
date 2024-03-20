@@ -1,6 +1,16 @@
+import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
+import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/presentation/widgets/error/button_go_back.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+final errorPageRoute = GoRoute(
+    path: Pages.error,
+    builder: (context, GoRouterState state) => ErrorPage(
+          imagePath: Assets.images.sunny.path,
+        ));
+
 class ErrorPage extends StatelessWidget {
   final String errorMessage;
   final String pathError;
@@ -12,7 +22,8 @@ class ErrorPage extends StatelessWidget {
     this.errorMessage = '',
     this.pathError = '',
     required this.imagePath,
-    this.title = 'Look like somethings had went wrong. \nPlease come back later!',
+    this.title =
+        'Look like somethings had went wrong. \nPlease come back later!',
   });
 
   @override
@@ -32,7 +43,7 @@ class ErrorPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: SpacingUnit.x1),
-                 Flexible(
+                Flexible(
                   child: Text(
                     title,
                     textAlign: TextAlign.center,

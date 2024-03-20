@@ -35,17 +35,14 @@ class _MainPageState extends State<MainPage>
         // Tab Profile
         ProfilePage(onBack: () => _navigateToTab(1)),
         // Tab Home
-          HomePage(
-            controller: widget.controller,
-            onTapMessage: () => _navigateToTab(2),
-            onTapProfile: () => _navigateToTab(0),
-          ),
+        HomePage(
+          controller: widget.controller,
+          onTapMessage: () => _navigateToTab(2),
+          onTapProfile: () => _navigateToTab(0),
+        ),
         // Tab Message
-     MessagePage(onBack: () => _navigateToTab(1)),
+        MessagePage(onBack: () => _navigateToTab(1)),
       ],
     );
   }
-
-
 }
-

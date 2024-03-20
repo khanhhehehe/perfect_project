@@ -90,4 +90,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get create => 'Create';
+
+  @override
+  String get askPermission => 'Camera permissions';
+
+  @override
+  String get youNeedToGrantCameraPermissions => 'You need to grant camera permissions. Go to settings now?';
+
+  @override
+  String get approve => 'Approve';
 }

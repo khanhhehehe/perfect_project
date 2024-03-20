@@ -266,6 +266,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create'**
   String get create;
+
+  /// No description provided for @askPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera permissions'**
+  String get askPermission;
+
+  /// No description provided for @youNeedToGrantCameraPermissions.
+  ///
+  /// In en, this message translates to:
+  /// **'You need to grant camera permissions. Go to settings now?'**
+  String get youNeedToGrantCameraPermissions;
+
+  /// No description provided for @approve.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get approve;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
