@@ -15,7 +15,6 @@ import 'package:camera_flutter/presentation/widgets/bottom_sheets/friend_bottom_
 import 'package:camera_flutter/presentation/widgets/bottom_sheets/content.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 final profilePageRoute = GoRoute(
     path: Pages.profile,
@@ -35,21 +34,12 @@ class _ProfilePageState extends State<ProfilePage> {
   double _appBarOpacity = 1.0;
   bool _showRowInAppBar = false;
   bool _showAvatar = true;
-  PackageInfo? _packageInfo;
 
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
     _scrollController.addListener(_onScroll);
-    _initPackageInfo();
-  }
-
-  Future<void> _initPackageInfo() async {
-    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    setState(() {
-      _packageInfo = packageInfo;
-    });
   }
 
   @override
@@ -311,7 +301,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         title: appLocalizations.editName,
                         onTap: () {
                           showAppModalBottomSheet(
-                              context: context, child: const EdigNametBottomSheet());
+                              context: context,
+                              child: const EdigNametBottomSheet());
                         },
                       ),
                       ItemDetail(
@@ -390,28 +381,27 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       ItemDetail(
                         title:
-                            '${appLocalizations.share} ${_packageInfo?.appName ?? appLocalizations.app}',
+                            '${appLocalizations.share} ${appLocalizations.app}',
                         onTap: () {},
                         iconData: Icons.ios_share,
                       ),
                       ItemDetail(
                         title:
-                            '${appLocalizations.rate} ${_packageInfo?.appName ?? appLocalizations.app}',
+                            '${appLocalizations.rate} ${appLocalizations.app}',
                         onTap: () {},
                         iconData: Icons.star_rate_rounded,
                       ),
                       ItemDetail(
                         title: appLocalizations.termOfService,
                         onTap: () {
-                                      getIt<AppNavigation>().push(page: Pages.term);
-
+                          getIt<AppNavigation>().push(page: Pages.term);
                         },
                         iconData: Icons.newspaper,
                       ),
                       ItemDetail(
                         title: appLocalizations.privacyPolicy,
                         onTap: () {
-                           getIt<AppNavigation>().push(page: Pages.policy);
+                          getIt<AppNavigation>().push(page: Pages.policy);
                         },
                         iconData: Icons.policy,
                       ),
