@@ -58,8 +58,8 @@ class _TakePictureState extends State<TakePicture> with WidgetsBindingObserver {
     if (state == AppLifecycleState.resumed &&
         !permissionCameraStatus.isGranted) {
       _checkPermission();
+      getIt<AppNavigation>().push(page: Pages.home);
     }
-    setState(() {});
     super.didChangeAppLifecycleState(state);
   }
 

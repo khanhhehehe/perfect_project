@@ -95,12 +95,11 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
+class _MyHomePageState extends State<MyHomePage> {
   late CameraController controller;
 
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this);
     super.initState();
     controller = CameraController(_cameras[0], ResolutionPreset.max);
     controller.initialize().then((_) {
@@ -131,12 +130,6 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
   Widget _bodyPage() {
     return MainPage(controller: controller);
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    setState(() {});
-    super.didChangeAppLifecycleState(state);
   }
 
   @override
