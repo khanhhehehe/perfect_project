@@ -5,6 +5,7 @@ import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
+import 'package:camera_flutter/presentation/pages/home/utils/home_utils.dart';
 import 'package:camera_flutter/presentation/pages/home/widgets/preview_camera.dart';
 import 'package:camera_flutter/themes/color_style.dart';
 import 'package:flutter/material.dart';
@@ -85,9 +86,9 @@ class _TakePictureState extends State<TakePicture> with WidgetsBindingObserver {
               onPressed: () => _takePicture(),
               icon: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(width: 2, color: MyAppColors.gold),
-                  borderRadius: BorderRadius.circular(100),
-                ),
+                    border: Border.all(width: 2, color: MyAppColors.gold),
+                    borderRadius: BorderRadius.circular(100),
+                    boxShadow: HomeUtils.buttonShadow),
                 padding: const EdgeInsets.all(2),
                 child: const Icon(
                   Icons.circle,
