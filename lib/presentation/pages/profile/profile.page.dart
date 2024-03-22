@@ -3,14 +3,17 @@ import 'package:camera_flutter/common/configs/routers/navigation.dart';
 import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
+import 'package:camera_flutter/domain/entities/enum/profile_enum.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
+import 'package:camera_flutter/presentation/pages/profile/utils/profile_utils.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/edit_name_bottom_sheet.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/widget_bottom_sheet.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/items/item_detail.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/items/item_setting.dart';
-import 'package:camera_flutter/presentation/pages/profile/widgets/items/item_widget.dart';
-import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/profile_app_bar.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/profile_avatar.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/setting_widget.dart';
 import 'package:camera_flutter/presentation/widgets/bottom_sheets/friend_bottom_sheet.dart';
 import 'package:camera_flutter/presentation/widgets/bottom_sheets/content.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +66,44 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
+  void _search() {
+    showAppModalBottomSheet(
+      context: context,
+      child: const FriendBottomSheet(),
+    );
+  }
+
+  void _widget() {
+    showAppModalBottomSheet(
+      context: context,
+      child: const WidgetBottomSheet(),
+    );
+  }
+
+  bool _isUseSvg(FavoriteType type) {
+    if (type == FavoriteType.iconInstagram ||
+        type == FavoriteType.iconTwitter) {
+      return true;
+    }
+    return false;
+  }
+
+  IconData? _iconFavorite(FavoriteType type) {
+    if (type == FavoriteType.iconInstagram ||
+        type == FavoriteType.iconTwitter) {
+      return null;
+    }
+    return ProfileUtils.iconFavorite(type: type);
+  }
+
+  String? _pathFavorite(FavoriteType type) {
+    if (type == FavoriteType.iconInstagram ||
+        type == FavoriteType.iconTwitter) {
+      return ProfileUtils.iconFavorite(type: type);
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
@@ -73,32 +114,11 @@ class _ProfilePageState extends State<ProfilePage> {
         elevation: 0,
         backgroundColor: Colors.black,
         title: _showRowInAppBar
-            ? const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CircleAvatarWidget(
-                    width: 50,
-                    height: 50,
-                    path: '',
-                    color: Colors.transparent,
-                  ),
-                  SizedBox(
-                    width: SpacingUnit.x1,
-                  ),
-                  Text(
-                    "Khanhanbuoi",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                      fontFamily: '',
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+            ? const ProfileAppBar(
+                avatar: '',
+                username: "Khanhanbuoi",
               )
-            : Container(),
+            : const SizedBox(),
         centerTitle: true,
         actions: [
           GestureDetector(
@@ -117,27 +137,7 @@ class _ProfilePageState extends State<ProfilePage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Opacity(
-                  opacity: _showAvatar ? 1 : 1 - _appBarOpacity,
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                          onTap: () {},
-                          child: const CircleAvatarWidget(
-                              width: 150, height: 150, path: '')),
-                      const SizedBox(height: SpacingUnit.x2_25),
-                      const Text(
-                        "Khanh an buoi",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
+                ProfileAvatar(showAvatar: _showAvatar, opacity: _appBarOpacity),
                 const SizedBox(
                   height: SpacingUnit.x10,
                 ),
@@ -148,12 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ItemDetail(
                         iconData: Icons.people,
                         title: '${9} ${appLocalizations.friend}',
-                        onTap: () {
-                          showAppModalBottomSheet(
-                            context: context,
-                            child: const FriendBottomSheet(),
-                          );
-                        },
+                        onTap: () => _search(),
                       )
                     ]),
                 ItemSetting(
@@ -163,269 +158,150 @@ class _ProfilePageState extends State<ProfilePage> {
                     padding: 4,
                     isUsingSvgFile: true,
                     child: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ItemWidget(
-                              callback: () {},
-                              isTutorial: true,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Stack(
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      Positioned(
-                                        left: -30,
-                                        top: 5,
-                                        child: CircleAvatarWidget(
-                                            padding: 0.8,
-                                            width: 40,
-                                            height: 40,
-                                            path: ''),
-                                      ),
-                                      Positioned(
-                                        left: 30,
-                                        top: 5,
-                                        child: CircleAvatarWidget(
-                                            padding: 0.8,
-                                            width: 48,
-                                            height: 40,
-                                            path: ''),
-                                      ),
-                                      CircleAvatarWidget(
-                                          padding: 0.8,
-                                          width: 50,
-                                          height: 50,
-                                          path: ''),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: SpacingUnit.x1,
-                                  ),
-                                  Text(
-                                    appLocalizations.everyone,
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 0.3),
-                                  )
-                                ],
-                              )),
-                          ItemWidget(
-                            callback: () {
-                              showAppModalBottomSheet(
-                                context: context,
-                                child: const WidgetBottomSheet(),
-                              );
-                            },
-                            isTutorial: false,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.orange, width: 3),
-                                      borderRadius: BorderRadius.circular(
-                                          DimensionApp.borderRadius * 5)),
-                                  child: Container(
-                                      margin: const EdgeInsets.all(3),
-                                      decoration: BoxDecoration(
-                                          color: Colors.yellow.withOpacity(0.8),
-                                          borderRadius: BorderRadius.circular(
-                                              DimensionApp.borderRadius * 5)),
-                                      child: const Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                        size: 28,
-                                      )),
-                                ),
-                                Container(
-                                  height: 40,
-                                  margin: const EdgeInsets.all(5),
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 3),
-                                  width: DimensionApp.screenWidth,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(
-                                            DimensionApp.borderRadius * 1.8),
-                                        bottomRight: Radius.circular(
-                                            DimensionApp.borderRadius * 1.8),
-                                        topLeft: Radius.circular(
-                                            DimensionApp.borderRadius * 0.8),
-                                        topRight: Radius.circular(
-                                            DimensionApp.borderRadius * 0.8),
-                                      ),
-                                      color: Colors.grey.withOpacity(0.4)),
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      appLocalizations.create,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
+                      SettingWidget(
+                        onPressFirst: () {},
+                        onPressSecond: () => _widget(),
                       )
                     ]),
                 ItemSetting(
                     iconData: Icons.person,
                     title: appLocalizations.general,
-                    child: [
-                      ItemDetail(
-                        iconData: Icons.account_circle,
-                        title: appLocalizations.editProfilePicture,
-                        onTap: () {
-                          print("hehe");
-                        },
-                      ),
-                      ItemDetail(
-                        iconData: Icons.sell,
-                        title: appLocalizations.editName,
-                        onTap: () {
-                          showAppModalBottomSheet(
-                              context: context,
-                              child: const EdigNametBottomSheet());
-                        },
-                      ),
-                      ItemDetail(
-                        iconData: Icons.celebration,
-                        title: appLocalizations.editBirthDay,
-                        onTap: () {
-                          print("hehe");
-                        },
-                      ),
-                      ItemDetail(
-                        iconData: Icons.email,
-                        title: appLocalizations.changeEmail,
-                        onTap: () {
-                          print("hehe");
-                        },
-                      ),
-                      ItemDetail(
-                        iconData: Icons.now_widgets_sharp,
-                        title: appLocalizations.addTheWidget,
-                        onTap: () {
-                          print("hehe");
-                        },
-                      ),
-                      ItemDetail(
-                        iconData: Icons.block,
-                        title: appLocalizations.blocked,
-                        onTap: () {
-                          print("hehe");
-                        },
-                      ),
-                      ItemDetail(
-                        iconData: Icons.settings_backup_restore,
-                        title: appLocalizations.restorePurchase,
-                        onTap: () {
-                          print("hehe");
-                        },
-                      ),
-                    ]),
+                    child: SettingType.values
+                        .map((e) => ItemDetail(
+                            title: ProfileUtils.titleSetting(
+                                type: e, context: context),
+                            iconData: ProfileUtils.iconSetting(type: e),
+                            onTap: () => _onPressSetting(e)))
+                        .toList()),
                 ItemSetting(
-                    iconData: Icons.support_agent,
-                    title: appLocalizations.support,
-                    child: [
-                      ItemDetail(
-                          title: appLocalizations.reportProblem,
-                          iconData: Icons.error,
-                          onTap: () {
-                            print("hehe");
-                          }),
-                      ItemDetail(
-                          title: appLocalizations.makeSuggestion,
-                          iconData: Icons.add_comment,
-                          onTap: () {
-                            print("hehe");
-                          }),
-                    ]),
+                  iconData: Icons.support_agent,
+                  title: appLocalizations.support,
+                  child: SupportType.values
+                      .map((e) => ItemDetail(
+                            title: ProfileUtils.titleSupport(
+                                type: e, context: context),
+                            iconData: ProfileUtils.iconSupport(type: e),
+                            onTap: () => _onPressSupport(e),
+                          ))
+                      .toList(),
+                ),
                 ItemSetting(
-                    title: appLocalizations.about,
-                    iconData: Icons.favorite,
-                    child: [
-                      ItemDetail(
-                        title: 'TikTok',
-                        onTap: () {},
-                        iconData: Icons.tiktok,
-                      ),
-                      ItemDetail(
-                        title: 'Instagram',
-                        onTap: () {},
-                        isUsingSvgFile: true,
-                        pathSvg: Assets.images.iconInstagram,
-                      ),
-                      ItemDetail(
-                        title: 'Twitter',
-                        onTap: () {},
-                        isUsingSvgFile: true,
-                        pathSvg: Assets.images.iconTwitter,
-                      ),
-                      ItemDetail(
-                        title:
-                            '${appLocalizations.share} ${appLocalizations.app}',
-                        onTap: () {},
-                        iconData: Icons.ios_share,
-                      ),
-                      ItemDetail(
-                        title:
-                            '${appLocalizations.rate} ${appLocalizations.app}',
-                        onTap: () {},
-                        iconData: Icons.star_rate_rounded,
-                      ),
-                      ItemDetail(
-                        title: appLocalizations.termOfService,
-                        onTap: () {
-                          getIt<AppNavigation>().push(page: Pages.term);
-                        },
-                        iconData: Icons.newspaper,
-                      ),
-                      ItemDetail(
-                        title: appLocalizations.privacyPolicy,
-                        onTap: () {
-                          getIt<AppNavigation>().push(page: Pages.policy);
-                        },
-                        iconData: Icons.policy,
-                      ),
-                    ]),
+                  title: appLocalizations.about,
+                  iconData: Icons.favorite,
+                  child: FavoriteType.values
+                      .map((e) => ItemDetail(
+                            title: ProfileUtils.titleFavorite(
+                                type: e, context: context),
+                            isUsingSvgFile: _isUseSvg(e),
+                            iconData: _iconFavorite(e),
+                            pathSvg: _pathFavorite(e),
+                            onTap: () => _onPressFavorite(e),
+                          ))
+                      .toList(),
+                ),
                 ItemSetting(
-                    title: appLocalizations.dangerZone,
-                    iconData: Icons.gpp_maybe,
-                    child: [
-                      ItemDetail(
-                        title: appLocalizations.deleteAccount,
-                        onTap: () {},
-                        iconData: Icons.delete,
-                      ),
-                      ItemDetail(
-                        title: appLocalizations.signOut,
-                        onTap: () {},
-                        iconData: Icons.waving_hand,
-                      ),
-                    ])
+                  title: appLocalizations.dangerZone,
+                  iconData: Icons.gpp_maybe,
+                  child: DangerZoneType.values
+                      .map((e) => ItemDetail(
+                          title: ProfileUtils.titleDangerZone(
+                              type: e, context: context),
+                          iconData: ProfileUtils.iconDangerZone(type: e),
+                          onTap: () => _onPressDangerZone(e)))
+                      .toList(),
+                )
               ],
             )
           ],
         ),
       ),
     );
+  }
+
+  void _onPressSetting(SettingType type) {
+    switch (type) {
+      case SettingType.editProfilePicture:
+        print('1');
+        break;
+      case SettingType.editName:
+        showAppModalBottomSheet(
+            context: context, child: const EditNameBottomSheet());
+        break;
+      case SettingType.editBirthDay:
+        print('3');
+        break;
+      case SettingType.changeEmail:
+        print('4');
+        break;
+      case SettingType.addTheWidget:
+        print('5');
+        break;
+      case SettingType.blocked:
+        print('6');
+        break;
+      case SettingType.restorePurchase:
+        print('7');
+        break;
+      default:
+        print('8');
+        break;
+    }
+  }
+
+  void _onPressSupport(SupportType type) {
+    switch (type) {
+      case SupportType.reportProblem:
+        print('9');
+        break;
+      case SupportType.makeSuggestion:
+        print('10');
+        break;
+      default:
+        print('11');
+        break;
+    }
+  }
+
+  void _onPressFavorite(FavoriteType type) {
+    switch (type) {
+      case FavoriteType.tiktok:
+        print('9');
+        break;
+      case FavoriteType.iconInstagram:
+        print('10');
+        break;
+      case FavoriteType.iconTwitter:
+        print('10');
+        break;
+      case FavoriteType.share:
+        print('10');
+        break;
+      case FavoriteType.rate:
+        print('10');
+        break;
+      case FavoriteType.termOfService:
+        getIt<AppNavigation>().push(page: Pages.term);
+        break;
+      case FavoriteType.privacyPolicy:
+        getIt<AppNavigation>().push(page: Pages.policy);
+        break;
+      default:
+        print('11');
+        break;
+    }
+  }
+
+  void _onPressDangerZone(DangerZoneType type) {
+    switch (type) {
+      case DangerZoneType.deleteAccount:
+        print('9');
+        break;
+      case DangerZoneType.signOut:
+        print('10');
+        break;
+      default:
+        print('11');
+        break;
+    }
   }
 }

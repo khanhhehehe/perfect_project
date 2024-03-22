@@ -42,7 +42,7 @@ class _PostImageState extends State<PostImage> {
           AppBar(
             title: Text(
               appLocalizations.sendTo,
-              style: TextThemeStyleApp.normalTheme,
+              style: TextThemeStyleApp.normal400,
             ),
             backgroundColor: Colors.transparent,
             leading: const SizedBox(),

@@ -19,11 +19,11 @@ class TermPage extends StatefulWidget {
 }
 
 class _TermPageState extends State<TermPage> {
-    bool _isLoading = true;
+  bool _isLoading = true;
 
   late final WebViewController _controller;
 
-   @override
+  @override
   void initState() {
     super.initState();
     _controller = WebViewController();
@@ -37,23 +37,24 @@ class _TermPageState extends State<TermPage> {
       _isLoading = false;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
 
-     return Scaffold(
+    return Scaffold(
       backgroundColor: MyAppColors.black,
       appBar: appBar(appLocalizations),
       body: _isLoading
           ? Container(
-              color: MyAppColors.black, 
+              color: MyAppColors.black,
             )
           : WebViewWidget(controller: _controller),
     );
   }
 
   PreferredSizeWidget appBar(AppLocalizations appLocalizations) => AppBar(
-    backgroundColor: MyAppColors.black,
+        backgroundColor: MyAppColors.black,
         leadingWidth: DimensionApp.screenWidth,
         leading: Row(
           children: [
@@ -66,9 +67,9 @@ class _TermPageState extends State<TermPage> {
                   color: Colors.white,
                   size: DimensionApp.screenWidth * 0.1,
                 )),
-                Text(
+            Text(
               appLocalizations.termOfService,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold),

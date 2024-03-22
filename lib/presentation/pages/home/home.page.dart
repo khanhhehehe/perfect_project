@@ -119,7 +119,8 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           title: GestureDetector(
-            onTap: () => showAppModalBottomSheet(context: context, child: FriendBottomSheet()),
+            onTap: () => showAppModalBottomSheet(
+                context: context, child: const FriendBottomSheet()),
             child: Container(
               width: SpacingUnit.x30,
               height: SpacingUnit.x12_5,
@@ -177,8 +178,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       );
-
-  
 }
 
 class TempWidget extends StatelessWidget {

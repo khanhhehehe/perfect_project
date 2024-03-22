@@ -1,16 +1,15 @@
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class EdigNametBottomSheet extends StatelessWidget {
-  const EdigNametBottomSheet({Key? key});
+class EditNameBottomSheet extends StatelessWidget {
+  const EditNameBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           "Sửa tên của bạn",
           style: TextStyle(
             fontSize: 25,
@@ -19,7 +18,7 @@ class EdigNametBottomSheet extends StatelessWidget {
             letterSpacing: 0.5,
           ),
         ),
-        Expanded(
+        const Expanded(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -44,9 +43,9 @@ class EdigNametBottomSheet extends StatelessWidget {
           onPressed: () {
             // Do something
           },
-          child: Text("Save"),
+          child: const Text("Save"),
         ),
-        SizedBox(
+        const SizedBox(
           height: SpacingUnit.x1,
         )
       ],

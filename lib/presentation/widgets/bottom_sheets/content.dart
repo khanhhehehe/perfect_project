@@ -15,21 +15,21 @@ Future<T?> showAppModalBottomSheet<T>({
     backgroundColor: Colors.transparent,
     elevation: 0,
     shape: const RoundedRectangleBorder(
-      borderRadius:
-          BorderRadius.vertical(top: Radius.circular(DimensionApp.borderRadius * 4)),
+      borderRadius: BorderRadius.vertical(
+          top: Radius.circular(DimensionApp.borderRadius * 4)),
     ),
     isScrollControlled: isScrollControlled ?? true,
     enableDrag: true,
     builder: (BuildContext context) {
       return Container(
           width: DimensionApp.screenWidth,
-          padding:  EdgeInsets.only(
+          padding: EdgeInsets.only(
               top: DimensionApp.verticalPadding,
               bottom: MediaQuery.of(context).viewInsets.bottom,
               left: DimensionApp.horizontalPadding * 1.2,
               right: DimensionApp.horizontalPadding * 1.2),
           height: DimensionApp.heightBottomSheet,
-          decoration:  BoxDecoration(
+          decoration: const BoxDecoration(
               color: MyAppColors.backgroundMainColor,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(DimensionApp.borderRadius * 4),
@@ -45,7 +45,8 @@ Future<T?> showAppModalBottomSheet<T>({
                   height: SpacingUnit.x1_5,
                   decoration: BoxDecoration(
                       color: Colors.grey,
-                      borderRadius: BorderRadius.circular(DimensionApp.borderRadius)),
+                      borderRadius:
+                          BorderRadius.circular(DimensionApp.borderRadius)),
                 ),
               ),
               Expanded(child: child)

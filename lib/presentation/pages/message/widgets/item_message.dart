@@ -1,6 +1,5 @@
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ItemMessage extends StatelessWidget {
@@ -64,7 +63,7 @@ class ItemMessage extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(
+            const Icon(
               Icons.chevron_right,
               size: 38,
             ),

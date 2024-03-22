@@ -14,6 +14,6 @@ class AppTheme {
               // fontFamily: "SFCompact"
             ),
             iconTheme: IconThemeData(color: Colors.white)),
-        iconTheme: IconThemeData(color: Colors.white));
+        iconTheme: const IconThemeData(color: Colors.white));
   }
 }
