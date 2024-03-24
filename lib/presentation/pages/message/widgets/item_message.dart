@@ -35,7 +35,7 @@ class ItemMessage extends StatelessWidget {
                   Row(
                     children: [
                       const Text(
-                        "Khanh an buoi",
+                        "Khanh ne",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
@@ -57,7 +57,7 @@ class ItemMessage extends StatelessWidget {
                     height: 7,
                   ),
                   Text(
-                    "dit me may",
+                    "cam on vi da xem",
                     style: TextStyle(fontSize: 14, color: Colors.grey.shade400),
                   )
                 ],

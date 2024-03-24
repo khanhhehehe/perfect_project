@@ -116,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: _showRowInAppBar
             ? const ProfileAppBar(
                 avatar: '',
-                username: "Khanhanbuoi",
+                username: "Khanhne",
               )
             : const SizedBox(),
         centerTitle: true,
@@ -234,7 +234,7 @@ class _ProfilePageState extends State<ProfilePage> {
         print('4');
         break;
       case SettingType.addTheWidget:
-        print('5');
+        _widget();
         break;
       case SettingType.blocked:
         print('6');

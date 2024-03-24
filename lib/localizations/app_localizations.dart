@@ -284,6 +284,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Approve'**
   String get approve;
+
+  /// No description provided for @addWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Add widgets to\nyour home screen'**
+  String get addWidget;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

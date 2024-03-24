@@ -19,7 +19,7 @@ class ProfileAvatar extends StatelessWidget {
                   const CircleAvatarWidget(width: 150, height: 150, path: '')),
           const SizedBox(height: SpacingUnit.x2_25),
           const Text(
-            "Khanh an buoi",
+            "Khanhne",
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w500,

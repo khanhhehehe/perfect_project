@@ -99,4 +99,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get approve => 'Approve';
+
+  @override
+  String get addWidget => 'Add widgets to\nyour home screen';
 }

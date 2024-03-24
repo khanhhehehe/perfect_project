@@ -30,7 +30,7 @@
   "create":"Create",
   "askPermission":"Camera permissions",
   "youNeedToGrantCameraPermissions":"You need to grant camera permissions. Go to settings now?",
-  "approve":"Approve"
-
+  "approve":"Approve",
+  "addWidget":"Add widgets to\nyour home screen"
 
 }

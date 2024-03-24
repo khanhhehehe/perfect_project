@@ -99,4 +99,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get approve => 'Xác nhận';
+
+  @override
+  String get addWidget => 'Thêm tiện ích vào\nmàn hình chính của bạn';
 }

@@ -30,6 +30,6 @@
   "create":"Tạo",
   "askPermission":"Quyền máy ảnh",
   "youNeedToGrantCameraPermissions":"Bạn cần cấp quyền máy ảnh. Đi tới cài đặt ngay?",
-  "approve":"Xác nhận"
-  
+  "approve":"Xác nhận",
+  "addWidget":"Thêm tiện ích vào\nmàn hình chính của bạn"
 }
