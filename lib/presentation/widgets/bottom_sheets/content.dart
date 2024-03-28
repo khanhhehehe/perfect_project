@@ -12,6 +12,7 @@ Future<T?> showAppModalBottomSheet<T>({
   return showModalBottomSheet<T>(
     isDismissible: isDismissible,
     context: context,
+    barrierColor: Colors.transparent,
     backgroundColor: Colors.transparent,
     elevation: 0,
     shape: const RoundedRectangleBorder(
@@ -30,7 +31,7 @@ Future<T?> showAppModalBottomSheet<T>({
               right: DimensionApp.horizontalPadding * 1.2),
           height: DimensionApp.heightBottomSheet,
           decoration: const BoxDecoration(
-              color: MyAppColors.backgroundMainColor,
+              color: MyAppColors.mainBackground,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(DimensionApp.borderRadius * 4),
                   topRight: Radius.circular(DimensionApp.borderRadius * 4))),

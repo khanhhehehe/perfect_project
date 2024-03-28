@@ -57,6 +57,12 @@ dependencies:
   carousel_slider: ^4.2.1
   webview_flutter: ^4.7.0
   permission_handler: ^9.1.0
+  share_plus: ^8.0.2
+  rate_my_app: ^2.0.0
+  the_apple_sign_in: ^1.1.1
+  sqflite: ^2.3.2
+  url_launcher: ^6.2.5
+  image_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:

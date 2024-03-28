@@ -6,7 +6,6 @@ import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/presentation/pages/home/take_picture.dart';
-import 'package:camera_flutter/presentation/pages/home/widgets/background_home.dart';
 import 'package:camera_flutter/presentation/widgets/avatar/circle_avatar.dart';
 import 'package:camera_flutter/presentation/widgets/bottom_sheets/content.dart';
 import 'package:camera_flutter/presentation/widgets/bottom_sheets/friend_bottom_sheet.dart';
@@ -32,7 +31,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      BackgroundHome(controller: widget.controller),
       SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,

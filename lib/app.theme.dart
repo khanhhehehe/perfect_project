@@ -1,8 +1,8 @@
+import 'package:camera_flutter/themes/color_style.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
   AppTheme._();
-
 
   static ThemeData lightTheme(BuildContext context) {
     final ThemeData base = ThemeData.light();
@@ -10,10 +10,15 @@ class AppTheme {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600,
+              color: MyAppColors.white, fontSize: 20,
+              fontWeight: FontWeight.w600,
               // fontFamily: "SFCompact"
             ),
             iconTheme: IconThemeData(color: Colors.white)),
-        iconTheme: const IconThemeData(color: Colors.white));
+        textSelectionTheme: const TextSelectionThemeData(
+            selectionColor: MyAppColors.cusorColor,
+            cursorColor: MyAppColors.cusorColor,
+            selectionHandleColor: MyAppColors.cusorColor),
+        iconTheme: const IconThemeData(color: MyAppColors.white));
   }
 }

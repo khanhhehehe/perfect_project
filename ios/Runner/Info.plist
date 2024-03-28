@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Mocket</string>
+	<string>Locket</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -33,15 +33,29 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+    <string>Main</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>sms</string>
+        <string>tel</string>
+    </array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photo library to save or upload photos.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera to take photos or record videos.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need access to your microphone to record audio when capturing videos.</string>
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
-<dict>
+	<dict>
     <key>NSAllowsLocalNetworking</key>
     <true/>
+	<key>FLTEnableImpeller</key>
+<false />
 </dict>
 </dict>
 </plist>

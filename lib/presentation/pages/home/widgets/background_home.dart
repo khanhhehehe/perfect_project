@@ -17,13 +17,13 @@ class BackgroundHome extends StatelessWidget {
           height: MediaQuery.sizeOf(context).height,
           padding: const EdgeInsets.all(SpacingUnit.x0_25),
           child: CameraPreview(controller)),
+    
       BackdropFilter(
-        filter: ImageFilter.blur(
-            sigmaX: SpacingUnit.x2_5, sigmaY: SpacingUnit.x2_5),
+        filter: ImageFilter.blur(sigmaX: SpacingUnit.x5, sigmaY: SpacingUnit.x5),
         child: Container(
           color: MyAppColors.black.withOpacity(0.9),
         ),
-      )
+      ),
     ]);
   }
 }

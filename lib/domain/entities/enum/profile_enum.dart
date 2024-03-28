@@ -1,7 +1,7 @@
 enum SettingType {
   editProfilePicture,
   editName,
-  editBirthDay,
+  editBirthday,
   changeEmail,
   addTheWidget,
   blocked,

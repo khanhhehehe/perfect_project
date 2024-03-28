@@ -14,4 +14,8 @@ class TextThemeStyleApp {
     color: Colors.white,
     fontFamily: '',
   );
+
+  static TextStyle inputTextColor = const TextStyle(
+    color: Colors.white,
+  );
 }
