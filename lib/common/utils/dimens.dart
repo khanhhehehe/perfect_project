@@ -14,7 +14,7 @@ class DimensionApp {
     _screenWidth = MediaQuery.of(context).size.width;
     _screenHeight = MediaQuery.of(context).size.height;
     _padding = MediaQuery.of(context).padding;
-    _heightBottomSheet=_screenHeight*0.93;
+    _heightBottomSheet=_screenHeight*0.94;
   }
 
   static double get screenWidth => _screenWidth;

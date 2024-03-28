@@ -86,7 +86,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get everyone => 'Mọi người';
 
   @override
-  String get app => 'Ứng dụng';
+  String get app => 'Locket';
 
   @override
   String get create => 'Tạo';

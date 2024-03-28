@@ -1,3 +1,4 @@
+import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
@@ -24,7 +25,7 @@ class _WidgetBottomSheetState extends State<WidgetBottomSheet> {
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.8,
+      height: DimensionApp.screenHeight * 0.8,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.max,
@@ -33,7 +34,7 @@ class _WidgetBottomSheetState extends State<WidgetBottomSheet> {
             appLocalizations.addWidget,
             textAlign: TextAlign.center,
             style: const TextStyle(
-                color: Colors.white, fontSize: 24, fontWeight: FontWeight.w600),
+                color: Colors.white, fontSize: SpacingUnit.x6, fontWeight: FontWeight.w600),
           ),
           Expanded(
             child: CarouselSlider(
@@ -47,7 +48,7 @@ class _WidgetBottomSheetState extends State<WidgetBottomSheet> {
               options: CarouselOptions(
                   enlargeCenterPage: true,
                   aspectRatio: 0.7,
-                  viewportFraction: 1,
+                  viewportFraction: SpacingUnit.x0_25,
                   onPageChanged: (index, reason) {
                     setState(() {
                       _current = index;
@@ -67,6 +68,7 @@ class _WidgetBottomSheetState extends State<WidgetBottomSheet> {
                       vertical: SpacingUnit.x2, horizontal: SpacingUnit.x1),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
+                      
                       color: Colors.white
                           .withOpacity(_current == entry.key ? 0.9 : 0.4)),
                 ),

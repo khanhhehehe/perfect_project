@@ -57,7 +57,7 @@ class ItemMessage extends StatelessWidget {
                     height: 7,
                   ),
                   Text(
-                    "cam on vi da xem",
+                    "cam on vi da den",
                     style: TextStyle(fontSize: 14, color: Colors.grey.shade400),
                   )
                 ],

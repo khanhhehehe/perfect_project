@@ -3,6 +3,8 @@ import 'package:camera_flutter/common/configs/locators.dart';
 import 'package:camera_flutter/common/configs/routers/pages.dart';
 import 'package:camera_flutter/common/configs/routers/router.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
+import 'package:camera_flutter/common/utils/screen_options.dart';
+import 'package:camera_flutter/domain/entities/enum/screen_option_enum.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/presentation/bloc/language/language_cubit.dart';
 import 'package:camera_flutter/presentation/bloc/language/language_state.dart';
@@ -51,17 +53,11 @@ class _MyAppState extends State<MyApp> {
     return supportedLocales.first;
   }
 
-  ///test
-  // final firebaseAuth = FirebaseAuth.instance;
-  // @override
-  // void initState() {
-  //   firebaseAuth.createUserWithEmailAndPassword(email: "aaaaaaaa1@gmail.com", password: "123123123");
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     DimensionApp.init(context);
+    //set Orientation
+    ScreenUtils.setPreferredOrientations([ScreenOrientation.portraitUp]);
     return MultiBlocProvider(
       providers: MainBloc.allBlocs(),
       child: BlocBuilder<LanguageCubit, LanguageState>(
@@ -130,6 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _bodyPage() {
     return MainPage(controller: controller);
+    // return MainPage();
   }
 
   @override

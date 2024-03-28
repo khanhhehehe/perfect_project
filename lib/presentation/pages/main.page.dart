@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:camera_flutter/presentation/pages/home/home.page.dart';
+import 'package:camera_flutter/presentation/pages/home/widgets/background_home.dart';
 import 'package:camera_flutter/presentation/pages/message/message.page.dart';
 import 'package:camera_flutter/presentation/pages/profile/profile.page.dart';
 import 'package:flutter/material.dart';
@@ -29,20 +30,35 @@ class _MainPageState extends State<MainPage>
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: hPagerController,
-      children: [
-        // Tab Profile
-        ProfilePage(onBack: () => _navigateToTab(1)),
-        // Tab Home
-        HomePage(
-          controller: widget.controller,
-          onTapMessage: () => _navigateToTab(2),
-          onTapProfile: () => _navigateToTab(0),
-        ),
-        // Tab Message
-        MessagePage(onBack: () => _navigateToTab(1)),
-      ],
-    );
+    return Stack(children: [
+      ///test on iphone
+      // Container(
+      //   width: double.infinity,
+      //   height: double.infinity,
+      //   color: MyAppColors.mainBackground,
+      // ),
+
+      //release
+      BackgroundHome(controller: widget.controller),
+      PageView(
+        controller: hPagerController,
+        children: [
+          // Tab Profile
+          ProfilePage(
+            onBack: () => _navigateToTab(1),
+          ),
+          // Tab Home
+          HomePage(
+            controller: widget.controller,
+            onTapMessage: () => _navigateToTab(2),
+            onTapProfile: () => _navigateToTab(0),
+          ),
+          // Tab Message
+          MessagePage(
+            onBack: () => _navigateToTab(1),
+          ),
+        ],
+      ),
+    ]);
   }
 }

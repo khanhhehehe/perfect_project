@@ -7,6 +7,7 @@ import 'package:camera_flutter/presentation/pages/error/error.page.dart';
 import 'package:camera_flutter/presentation/pages/policy/policy.page.dart';
 import 'package:camera_flutter/presentation/pages/post_image/post_image.page.dart';
 import 'package:camera_flutter/presentation/pages/profile/profile.page.dart';
+import 'package:camera_flutter/presentation/pages/splash/splash.page.dart';
 import 'package:camera_flutter/presentation/pages/term/term.page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
@@ -35,5 +36,6 @@ class AppRouters {
     Pages.term: termsPage,
     Pages.postImage: postImagePageRoute,
     Pages.error: errorPageRoute,
+    Pages.splash: splashPageRoute,
   }.entries.map((entry) => entry.value).toList();
 }
