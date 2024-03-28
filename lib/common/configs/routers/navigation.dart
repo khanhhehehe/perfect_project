@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 @LazySingleton()
 class AppNavigation {
@@ -151,5 +153,12 @@ class AppNavigation {
   pop({BuildContext? buildContext}) {
     final context = buildContext ?? navigatorKey.currentContext!;
     return GoRouter.of(context).pop();
+  }
+
+  Future<void> navigateToLink({required String link}) async {
+    final Uri url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

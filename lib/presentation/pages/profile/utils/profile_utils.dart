@@ -10,7 +10,7 @@ class ProfileUtils {
         return Icons.account_circle;
       case SettingType.editName:
         return Icons.sell;
-      case SettingType.editBirthDay:
+      case SettingType.editBirthday:
         return Icons.celebration;
       case SettingType.changeEmail:
         return Icons.email;
@@ -33,7 +33,7 @@ class ProfileUtils {
         return appLocalizations.editProfilePicture;
       case SettingType.editName:
         return appLocalizations.editName;
-      case SettingType.editBirthDay:
+      case SettingType.editBirthday:
         return appLocalizations.editBirthDay;
       case SettingType.changeEmail:
         return appLocalizations.changeEmail;
@@ -132,7 +132,7 @@ class ProfileUtils {
     final appLocalizations = AppLocalizations.of(context)!;
     switch (type) {
       case DangerZoneType.deleteAccount:
-        return appLocalizations.dangerZone;
+        return appLocalizations.deleteAccount;
       case DangerZoneType.signOut:
         return appLocalizations.signOut;
       default:
