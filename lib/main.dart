@@ -92,41 +92,41 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // late CameraController controller;
+  late CameraController controller;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   controller = CameraController(_cameras[0], ResolutionPreset.max);
-  //   controller.initialize().then((_) {
-  //     if (!mounted) {
-  //       return;
-  //     }
-  //     setState(() {});
-  //   }).catchError((Object e) {
-  //     if (e is CameraException) {
-  //       switch (e.code) {
-  //         case 'CameraAccessDenied':
-  //           // Handle access errors here.
-  //           // getIt<AppNavigation>().push(page: Pages.error);
-  //           break;
-  //         default:
-  //           // Handle other errors here.
-  //           break;
-  //       }
-  //     }
-  //   });
-  // }
+  @override
+  void initState() {
+    super.initState();
+    controller = CameraController(_cameras[0], ResolutionPreset.max);
+    controller.initialize().then((_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {});
+    }).catchError((Object e) {
+      if (e is CameraException) {
+        switch (e.code) {
+          case 'CameraAccessDenied':
+            // Handle access errors here.
+            // getIt<AppNavigation>().push(page: Pages.error);
+            break;
+          default:
+            // Handle other errors here.
+            break;
+        }
+      }
+    });
+  }
 
-  // @override
-  // void dispose() {
-  //   controller.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   Widget _bodyPage() {
-    // return MainPage(controller: controller);
-    return MainPage();
+    return MainPage(controller: controller);
+    // return MainPage();
   }
 
   @override

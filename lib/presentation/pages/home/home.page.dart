@@ -15,11 +15,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 class HomePage extends StatefulWidget {
   final VoidCallback? onTapMessage;
   final VoidCallback? onTapProfile;
-  // final CameraController controller;
+  final CameraController controller;
 
   const HomePage(
       {super.key,
-      // required this.controller,
+      required this.controller,
       this.onTapMessage,
       this.onTapProfile});
 
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               child: PageView(
                 children: [
                   _verticalPageView([
-                    // TakePicture(controller: widget.controller),
+                    TakePicture(controller: widget.controller),
                     const TempWidget(color: Colors.white),
                     const TempWidget(color: Colors.red),
                     const TempWidget(color: Colors.blueGrey),
