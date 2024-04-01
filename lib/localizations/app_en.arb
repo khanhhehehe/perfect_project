@@ -31,6 +31,12 @@
   "askPermission":"Camera permissions",
   "youNeedToGrantCameraPermissions":"You need to grant camera permissions. Go to settings now?",
   "approve":"Approve",
-  "addWidget":"Add widgets to\nyour home screen"
-
+  "addWidget":"Add widgets to\nyour home screen",
+  "pleaseWeKnowYourBirthday":"Please tell us your date of birth?",
+  "pleaseLetUsKnowSoWeCanCelebrateTogether":"Please let us know so we can celebrate together! 🎆",
+  "month":"Month",
+  "date":"Date",
+  "continueNext":"Continue",
+  "message":"Message",
+  "different":"Different"
 }

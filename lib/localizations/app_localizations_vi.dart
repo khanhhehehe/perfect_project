@@ -102,4 +102,25 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get addWidget => 'Thêm tiện ích vào\nmàn hình chính của bạn';
+
+  @override
+  String get pleaseWeKnowYourBirthday => 'Hãy cho chúng tôi biết ngày sinh của bạn?';
+
+  @override
+  String get pleaseLetUsKnowSoWeCanCelebrateTogether => 'Hãy thông báo cho chúng tôi để chúng tôi cùng ăn mừng! 🎆';
+
+  @override
+  String get month => 'Tháng';
+
+  @override
+  String get date => 'Ngày';
+
+  @override
+  String get continueNext => 'Tiếp tục';
+
+  @override
+  String get message => 'Tin nhắn';
+
+  @override
+  String get different => 'Khác';
 }

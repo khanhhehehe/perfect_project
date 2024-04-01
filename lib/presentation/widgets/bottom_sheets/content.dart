@@ -8,6 +8,7 @@ Future<T?> showAppModalBottomSheet<T>({
   required Widget child,
   bool? isScrollControlled,
   bool isDismissible = true,
+  double? height,
 }) {
   return showModalBottomSheet<T>(
     isDismissible: isDismissible,
@@ -22,37 +23,40 @@ Future<T?> showAppModalBottomSheet<T>({
     isScrollControlled: isScrollControlled ?? true,
     enableDrag: true,
     builder: (BuildContext context) {
-      return Container(
-          width: DimensionApp.screenWidth,
-          padding: EdgeInsets.only(
-              top: DimensionApp.verticalPadding,
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-              left: DimensionApp.horizontalPadding * 1.2,
-              right: DimensionApp.horizontalPadding * 1.2),
-          height: DimensionApp.heightBottomSheet,
-          decoration: const BoxDecoration(
-              color: MyAppColors.mainBackground,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(DimensionApp.borderRadius * 4),
-                  topRight: Radius.circular(DimensionApp.borderRadius * 4))),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  margin: const EdgeInsets.only(bottom: 30),
-                  width: SpacingUnit.x10_5,
-                  height: SpacingUnit.x1_5,
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius:
-                          BorderRadius.circular(DimensionApp.borderRadius)),
+      return Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Container(
+            width: DimensionApp.screenWidth,
+            padding: const EdgeInsets.only(
+                top: DimensionApp.verticalPadding,
+                left: DimensionApp.horizontalPadding * 1.2,
+                right: DimensionApp.horizontalPadding * 1.2),
+            height: height ?? DimensionApp.heightBottomSheet,
+            decoration: const BoxDecoration(
+                color: MyAppColors.mainBackground,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(DimensionApp.borderRadius * 4),
+                    topRight: Radius.circular(DimensionApp.borderRadius * 4))),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    margin: const EdgeInsets.only(bottom: 30),
+                    width: SpacingUnit.x10_5,
+                    height: SpacingUnit.x1_5,
+                    decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius:
+                            BorderRadius.circular(DimensionApp.borderRadius)),
+                  ),
                 ),
-              ),
-              Expanded(child: child)
-            ],
-          ));
+                Expanded(child: child)
+              ],
+            )),
+      );
     },
   );
 }

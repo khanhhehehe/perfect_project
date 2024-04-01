@@ -102,4 +102,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addWidget => 'Add widgets to\nyour home screen';
+
+  @override
+  String get pleaseWeKnowYourBirthday => 'Please tell us your date of birth?';
+
+  @override
+  String get pleaseLetUsKnowSoWeCanCelebrateTogether => 'Please let us know so we can celebrate together! 🎆';
+
+  @override
+  String get month => 'Month';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get continueNext => 'Continue';
+
+  @override
+  String get message => 'Message';
+
+  @override
+  String get different => 'Different';
 }

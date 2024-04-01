@@ -10,6 +10,7 @@ import 'package:camera_flutter/gen/assets.gen.dart';
 import 'package:camera_flutter/localizations/app_localizations.dart';
 import 'package:camera_flutter/presentation/pages/profile/utils/profile_utils.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/block_account_bottom_sheet.dart';
+import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/edit_birthday_bottom_sheet.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/edit_email_bottom_sheet.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/edit_name_bottom_sheet.dart';
 import 'package:camera_flutter/presentation/pages/profile/widgets/bottom_sheets/report_problem_bottom_sheet.dart';
@@ -248,11 +249,16 @@ class _ProfilePageState extends State<ProfilePage> {
             context: context, child: const EditNameBottomSheet());
         break;
       case SettingType.editBirthday:
-        print('3');
+        showAppModalBottomSheet(
+            context: context,
+            child: const EditBirthday(),
+            height: DimensionApp.screenHeight * 0.42);
         break;
       case SettingType.changeEmail:
         showAppModalBottomSheet(
-            context: context, child: const EditEmailBottomSheet());
+            context: context,
+            child: const EditEmailBottomSheet(),
+            height: DimensionApp.screenHeight * 0.42);
         break;
       case SettingType.addTheWidget:
         _widget();

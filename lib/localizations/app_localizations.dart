@@ -290,6 +290,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add widgets to\nyour home screen'**
   String get addWidget;
+
+  /// No description provided for @pleaseWeKnowYourBirthday.
+  ///
+  /// In en, this message translates to:
+  /// **'Please tell us your date of birth?'**
+  String get pleaseWeKnowYourBirthday;
+
+  /// No description provided for @pleaseLetUsKnowSoWeCanCelebrateTogether.
+  ///
+  /// In en, this message translates to:
+  /// **'Please let us know so we can celebrate together! 🎆'**
+  String get pleaseLetUsKnowSoWeCanCelebrateTogether;
+
+  /// No description provided for @month.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get month;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @continueNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueNext;
+
+  /// No description provided for @message.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get message;
+
+  /// No description provided for @different.
+  ///
+  /// In en, this message translates to:
+  /// **'Different'**
+  String get different;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

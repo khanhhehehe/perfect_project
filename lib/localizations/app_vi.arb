@@ -31,5 +31,12 @@
   "askPermission":"Quyền máy ảnh",
   "youNeedToGrantCameraPermissions":"Bạn cần cấp quyền máy ảnh. Đi tới cài đặt ngay?",
   "approve":"Xác nhận",
-  "addWidget":"Thêm tiện ích vào\nmàn hình chính của bạn"
+  "addWidget":"Thêm tiện ích vào\nmàn hình chính của bạn",
+  "pleaseWeKnowYourBirthday":"Hãy cho chúng tôi biết ngày sinh của bạn?",
+  "pleaseLetUsKnowSoWeCanCelebrateTogether":"Hãy thông báo cho chúng tôi để chúng tôi cùng ăn mừng! 🎆",
+  "month":"Tháng",
+  "date":"Ngày",
+  "continueNext":"Tiếp tục",
+  "message":"Tin nhắn",
+  "different":"Khác"
 }
