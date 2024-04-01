@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String title;
-  const ButtonWidget({super.key, required this.title});
+  final VoidCallback? onPress;
+  const ButtonWidget({super.key, this.title = '', this.onPress});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class ButtonWidget extends StatelessWidget {
         shadowColor: MyAppColors.cusorColor,
         elevation: 5,
       ),
-      onPressed: () {},
+      onPressed: () => onPress?.call(),
       child: Text(
         title,
         style: const TextStyle(

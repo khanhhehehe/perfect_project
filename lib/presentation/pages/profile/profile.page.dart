@@ -2,6 +2,7 @@ import 'package:camera_flutter/common/configs/locators.dart';
 import 'package:camera_flutter/common/configs/rate_my_app/rate_my_app.dart';
 import 'package:camera_flutter/common/configs/routers/navigation.dart';
 import 'package:camera_flutter/common/configs/routers/pages.dart';
+import 'package:camera_flutter/common/url/path_url.dart';
 import 'package:camera_flutter/common/utils/dimens.dart';
 import 'package:camera_flutter/common/utils/spacing_unit.dart';
 import 'package:camera_flutter/domain/entities/enum/profile_enum.dart';
@@ -295,17 +296,14 @@ class _ProfilePageState extends State<ProfilePage> {
   void _onPressFavorite(FavoriteType type) async {
     switch (type) {
       case FavoriteType.tiktok:
-        getIt<AppNavigation>()
-            .navigateToLink(link: "https://www.tiktok.com/@linhbenho_0");
+        getIt<AppNavigation>().navigateToLink(link: linkTiktok);
         break;
       case FavoriteType.iconInstagram:
-        getIt<AppNavigation>()
-            .navigateToLink(link: "https://www.instagram.com/_t.thaoo__/");
+        getIt<AppNavigation>().navigateToLink(link: linkInstagram);
 
         break;
       case FavoriteType.iconTwitter:
-        getIt<AppNavigation>()
-            .navigateToLink(link: "https://twitter.com/Pearl3229");
+        getIt<AppNavigation>().navigateToLink(link: linkTwitter);
         break;
       case FavoriteType.share:
         _showShareBottomSheet();
